@@ -1,0 +1,14 @@
+{
+  "name": "sotu-over-under",
+  "version": "0.0.0",
+  "description": "An app facilitating the making of bets against frequency of words in President Barack Obama's 2015 State of the Union address.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrew McGill",
+  "license": "ISC",
+  "dependencies": {
+    "express": "~4.10.7"
+  }
+}

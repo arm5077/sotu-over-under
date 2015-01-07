@@ -1,0 +1,10 @@
+express = require("express");
+var app = express();
+
+app.get("/words/:word", function(request, response){
+    if (!request.params.name)
+        response.status(400).json("No name selected!");
+});
+
+
+module.exports = app;

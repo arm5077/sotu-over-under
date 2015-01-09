@@ -41,12 +41,31 @@ app.post("/users", function(request, response){
 	
 });
 
+// Get user information
 app.get("/users/:userid", function(request, response){
 	connection.query("SELECT * FROM sotu.users WHERE userid = ?", request.params.userid, function(err, rows, fields){
 		if( err ) throw err; 
 		response.status(200).json(rows);
 	});
 });
+
+app.get("/users", function(request, response){
+	if( request.query.email ){
+		connection.query("SELECT * FROM sotu.users WHERE email = ?", [request.query.email], function(err, rows, fields){
+			if( err ) throw err; 
+			response.status(200).json(rows);
+		});
+	}	
+	
+	else if( request.query.facebookid ){
+		connection.query("SELECT * FROM sotu.users WHERE facebookid = ?", [request.query.facebookid], function(err, rows, fields){
+			if( err ) throw err; 
+			response.status(200).json(rows);
+		});
+	}
+	
+});
+
 
 app.get("/words", function(request, response){
     response.status(400).json("No word selected!"); 

@@ -1,0 +1,158 @@
+@font-face {
+	font-family: "FreightSans";
+	font-weight:400;
+	src: url("fonts/FreigSanProMed.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "FreightSans";
+	font-weight: 600;
+	src: url("fonts/FreigSanProSem.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "FreightSans";
+	font-weight: 800;
+	src: url("fonts/FreigSanProBold.otf") format("opentype");
+}
+
+@font-face {
+	font-family: "FreightSans";
+	font-weight: 100;
+	src: url("fonts/FreigSanProLig.otf") format("opentype");
+}
+
+.center {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+body {
+	font-family: FreightSans;
+}
+
+.content {
+	width: 90%;
+	max-width:600px;
+	margin:auto;
+}
+
+	.content .guessContainer {
+		width:100%;
+		margin-bottom:70px;
+		padding-bottom:70px;
+		border-bottom:1px solid rgba(0,0,0,.4);
+		position:relative;
+	}
+	
+		.content .guessContainer:before{
+			content: "1";
+			padding: 0px 30px 10px;
+			font-size: 30pt;
+			font-weight: bold;
+			position: absolute;
+			top: 10px;
+			left: -100px;
+			background-color: #FFE4BF;
+			line-height: 40px;
+			height: 40px;
+			color: rgba(0,0,0,.4);
+		}
+
+		.content .guessContainer h1 {
+			font-family: FreightSans;
+			font-weight:600;
+			font-size:40pt;
+			color: #FAA61A;
+			text-align:center;
+			margin:10px 0px;
+			line-height:1em;
+			margin-top:0px;
+		}
+			.content .guessContainer h1:before, .content .guessContainer h1:after {
+				color: #E6E7E8;
+				font-weight:400;
+				font-size:40pt;
+				margin: 0px 10px;
+				position:relative;
+				top:10px;
+			}
+		
+				.content .guessContainer h1:after { content: "\201D"; }
+		
+				.content .guessContainer h1:before { content: "\201C"; }
+			
+		.content .guessContainer p {
+			font-family: "FreightSans";
+			font-weight: 400;
+			font-size: 14pt;
+			width:100%;
+			line-height: 1.26em;
+		}
+		
+			.content .guessContainer strong {
+				color: #FAA61A;
+				text-transform: uppercase;
+				
+			}
+	
+		.content .guessContainer .quoteBox{
+			width: 80%;
+			padding:10px;
+			font-size: 11pt;
+			margin:10px auto;
+			background-color:rgba(0, 0, 0, .1);
+			text-align: center;
+		}
+		
+			.content  .guessContainer .quoteBox .quote {
+				color:black;
+				
+			}
+		
+		.content .guessContainer .chart {
+			width: 80%;
+			margin: 30px auto 30px;
+			border-top: 4px solid rgba(0,0,0,.7);
+			border-bottom: 1px solid rgba(0,0,0,.4);
+			padding-top:5px;
+			font-weight:800;
+		}
+			
+			.content .guessContainer .chart .header {
+					margin-bottom: 20px;
+				
+			}
+		
+			.content .guessContainer .chart svg {
+				height:200px;
+				background-color: rgba(0,0,0, .05);
+				width:100%;
+				margin-bottom: 15px;
+			}
+		
+		.content .guessContainer .sliderBox  {
+			width: 100%;
+			//float:left;
+		}
+		
+		.content .guessContainer .buttonBox {
+			width:20%;
+			//float:left;
+			margin:auto;
+		}
+		
+			.content .guessContainer .buttonBox .ui-btn {
+				width:100%;
+			}
+		
+			.ui-btn-active {
+				background-color: #FAA61A !important;
+			}	
+		
+		
+		
+		
+		

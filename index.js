@@ -4,16 +4,16 @@ var router = express.Router();
 var mysql = require('mysql')
 var bodyparser = require('body-parser')
 
-var constants = require("./constants")
-
 app.use( bodyparser.json() ); 
 app.use( bodyparser.urlencoded({ extended: false }) );
 
 var connection = mysql.createConnection({
-  host     : constants.host,
-  user     : constants.user,
-  password : constants.password
+  host     : process.env.database_host,
+  user     : process.env.database_user,
+  password : process.env.database_password
 });
+
+console.log(process.env.database_user);
 
 connection.query("SHOW DATABASES", function(err,rows,fields){
 	if (err) throw err;
@@ -41,7 +41,7 @@ app.post("/users", function(request, response){
 	
 });
 
-// Get user information
+// Get user information by userid (default)
 app.get("/users/:userid", function(request, response){
 	connection.query("SELECT * FROM sotu.users WHERE userid = ?", request.params.userid, function(err, rows, fields){
 		if( err ) throw err; 
@@ -49,7 +49,9 @@ app.get("/users/:userid", function(request, response){
 	});
 });
 
+// Get user information by user email or facebook id (query string)
 app.get("/users", function(request, response){
+	// email
 	if( request.query.email ){
 		connection.query("SELECT * FROM sotu.users WHERE email = ?", [request.query.email], function(err, rows, fields){
 			if( err ) throw err; 
@@ -57,6 +59,7 @@ app.get("/users", function(request, response){
 		});
 	}	
 	
+	//facebook
 	else if( request.query.facebookid ){
 		connection.query("SELECT * FROM sotu.users WHERE facebookid = ?", [request.query.facebookid], function(err, rows, fields){
 			if( err ) throw err; 
@@ -65,6 +68,8 @@ app.get("/users", function(request, response){
 	}
 	
 });
+
+
 
 
 app.get("/words", function(request, response){

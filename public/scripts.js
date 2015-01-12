@@ -7,10 +7,20 @@ app.controller("sotuController", ["$scope", function($scope){
 	$scope.minHeight = 30;
 	
 	$scope.insertBar = function(keyword){
-		keyword.years.push({year:2015, count:20});
+	//	keyword.years.push({year:2015, count:20});
 		
 	};
 	
+	$scope.applyGuess = function(value, data){
+		if( data.years.map(function(data){ return data.year }).indexOf(2015) == "-1" ) {
+			console.log("yo");
+			data.years.push({year: 2015, count: value});
+		}
+		else {
+			console.log(data.years);
+			data.years[data.years.length - 1].count = value;
+		}
+	};
 	
 	$scope.barHeight = function(value, data){
 		height = value / d3.max(data, function(d){ return d.count }) * $scope.chartHeight;

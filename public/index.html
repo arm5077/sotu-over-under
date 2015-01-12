@@ -11,8 +11,7 @@
 	
 	<!-- jQuery mobile -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
+
 	
 	<link href="styles.css" rel="stylesheet">
 	
@@ -34,12 +33,13 @@
 					Number of "clean energy" SOTU mentions, by year
 				</div>
 				<div class="chartContainer" height="{{ chartHeight }}px">
-					<bar ng-repeat="year in keyword.years">{{ year.count }}</bar>
+					<bar ng-repeat="year in keyword.years" style="width: {{barWidth(year.count, keyword.years)}}%; height: {{barHeight(year.count, keyword.years)}}px; top: {{barTop(year.count, keyword.years)}}px; left: {{barLeft(year.year, keyword.years)}}%; color: {{barColor(year.count, keyword.years)}}; background-color: {{barBackgroundColor(year.count, keyword.years)}}">{{ year.count }}</bar>
 				</div>
 			</div>
-			<p class="center" ng-click = "insertBar(keyword)">In his upcoming SOTU, how many times do you think Obama will mention <strong>{{ keyword.phrase.toLowerCase() }}</strong>?</p>			
-			<div class="sliderBox">
-				<input type="range" name="slider-fill" data-highlight="true" min="0" max="25" ng-model="keyword.guess">
+			<p class="center">In his upcoming SOTU, how many times do you think Obama will mention <strong>{{ keyword.phrase.toLowerCase() }}</strong>?</p>			
+			{{keyword.guess}}
+			<div class="sliderBox" ng-mousedown = "insertBar(keyword)">
+				<input type="range" name="slider-fill" data-highlight="true" min="0" max="25" ng-model="keyword.guess" ng-change="applyGuess(keyword.guess, keyword)">
 			</div>
 			<div class="buttonBox">
 				<input type="button" value="Go" data-inline="true" data-mini="true" />

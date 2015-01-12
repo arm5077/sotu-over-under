@@ -134,7 +134,7 @@ body {
 				position: relative;
 			}
 			
-				.content .guessContainer .chart .chartContainer .bar {
+				.content .guessContainer .chart .chartContainer bar {
 					position: absolute;
 					background-color: #FAA61A;
 					text-align: center;

@@ -34,12 +34,12 @@
 					Number of "clean energy" SOTU mentions, by year
 				</div>
 				<div class="chartContainer" height="{{ chartHeight }}px">
-					<div class="bar" ng-repeat="year in keyword.years" height="{{ barHeight(year.count, keyword.years) }}px" style="width: {{ barWidth(year.count, keyword.years) }}px"></div>
+					<bar ng-repeat="year in keyword.years">{{ year.count }}</bar>
 				</div>
 			</div>
-			<p class="center">In his upcoming SOTU, how many times do you think Obama will mention <strong>{{ keyword.phrase.toLowerCase() }}</strong>?</p>			
+			<p class="center" ng-click = "insertBar(keyword)">In his upcoming SOTU, how many times do you think Obama will mention <strong>{{ keyword.phrase.toLowerCase() }}</strong>?</p>			
 			<div class="sliderBox">
-				<input type="range" name="slider-fill" data-highlight="true" value="0" min="0" max="25">
+				<input type="range" name="slider-fill" data-highlight="true" min="0" max="25" ng-model="keyword.guess">
 			</div>
 			<div class="buttonBox">
 				<input type="button" value="Go" data-inline="true" data-mini="true" />

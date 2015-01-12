@@ -15,8 +15,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
 	
 	<link href="styles.css" rel="stylesheet">
-	<script type = "text/javascript" src="data.json"></script>
-	<script type="text/javascript" src="scripts.js"></script>
+	
 
 <head>
 
@@ -34,7 +33,9 @@
 				<div class="header">
 					Number of "clean energy" SOTU mentions, by year
 				</div>
-				<div class="chartContainer"></div>
+				<div class="chartContainer" height="{{ chartHeight }}px">
+					<div class="bar" ng-repeat="year in keyword.years" height="{{ barHeight(year.count, keyword.years) }}px" style="width: {{ barWidth(year.count, keyword.years) }}px"></div>
+				</div>
 			</div>
 			<p class="center">In his upcoming SOTU, how many times do you think Obama will mention <strong>{{ keyword.phrase.toLowerCase() }}</strong>?</p>			
 			<div class="sliderBox">
@@ -49,5 +50,8 @@
 	</div>
 	
 </body>
+
+<script type = "text/javascript" src="data.json"></script>
+	<script type="text/javascript" src="scripts.js"></script>
 
 </html>

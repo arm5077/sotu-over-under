@@ -126,12 +126,23 @@ body {
 				
 			}
 		
-			.content .guessContainer .chart svg {
+			.content .guessContainer .chart .chartContainer {
 				height:200px;
 				background-color: rgba(0,0,0, .05);
 				width:100%;
 				margin-bottom: 15px;
+				position: relative;
 			}
+			
+				.content .guessContainer .chart .chartContainer .bar {
+					position: absolute;
+					background-color: #FAA61A;
+					text-align: center;
+					color: rgba(255,255,255,.9);
+					text-shadow: none;
+					font-size:14pt;
+					
+				}
 		
 		.content .guessContainer .sliderBox  {
 			width: 100%;

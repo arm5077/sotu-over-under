@@ -1,0 +1,11 @@
+var keywords = [
+	{
+		"phrase": "Clean Energy",
+		"intro": "Chatter chatter chatter. Chat. Chatter chatter chatter. cHatter and more here and htis is another sentence that breaks boundaries. Chatter chatter. Chatte chatter chatter chater. Chatter chatter chatter chatter chatter chat about a cat in a hat with a bat.",
+		"quotes": [
+			"\"So tonight I challenge you to join me in setting a new goal: By 2035, 80 percent of America's electricity will come from <strong>clean energy</strong> sources.\" (2012)"
+		],
+		
+	}
+
+];

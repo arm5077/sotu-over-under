@@ -55,10 +55,10 @@ body {
 			position: absolute;
 			top: 10px;
 			left: -100px;
-			background-color: #FFE4BF;
+			background-color: rgba(250,166,26,.5);
 			line-height: 40px;
 			height: 40px;
-			color: rgba(0,0,0,.4);
+			color: rgba(255,255,255,.9);
 		}
 
 		.content .guessContainer h1 {

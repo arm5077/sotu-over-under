@@ -40,37 +40,74 @@ app.controller("sotuController", ["$scope", "$sce", "$http", function($scope, $s
 			data.years.push({year: 2015, count: value});
 		}
 		else {
-			console.log(data.years);
 			data.years[index].count = value;
 		}
 	};
 
-	$scope.submitGuess = function(guess, data){
+	$scope.submitGuess = function(guess, keyword){
 		// See if they haven't actually selected anything;
 		// if they haven't (sillies!) then default to 0
-		if(data.years.map(function(data){ return data.year }).indexOf(2015) == "-1") 
-			data.years.push({year: 2015, count: guess});
+		if(keyword.years.map(function(keyword){ return keyword.year }).indexOf(2015) == "-1") 
+			keyword.years.push({year: 2015, count: guess});
 		
 		// If they haven't submitted/registered before, register them as a user first
-		if( !$scope.submitted_or_registered_yet )
-		$http({
-			url: "http://localhost:3000/users",
-			method: "POST",
-			data: {
-				"userid": $scope.userid,
-				"email": $scope.email,
-				"facebookid": $scope.facebookid
-			}
-		}).success(function(data, status, headers, config){
-			console.log("User data submitted and accepted with gusto!");
-		}).error(function(data, status, headers, config){
-			console.log("User submission failed hard. Here's why: " + data);			
-		});
-		
-		var index = data.years.map(function(data){ return data.year }).indexOf("Avg.")
-		if( index == "-1" ) {
-			data.years.push({year: "Avg.", count: 5});
+		if( !$scope.submitted_or_registered_yet ) {
+			$http({
+				url: "http://localhost:3000/users",
+				method: "POST",
+				data: {
+					"userid": $scope.userid,
+					"email": $scope.email,
+					"facebookid": $scope.facebookid
+				}
+			}).success(function(data, status, headers, config){
+				console.log("User data submitted and accepted with gusto!");
+				$scope.submitted_or_registered_yet = true;
+				submitGuessToServer();
+			}).error(function(data, status, headers, config){
+				console.log("User submission failed hard. Here's why: " + data);			
+			});
 		}
+		// This is for if their userid already exists on the database
+		else {
+			submitGuessToServer();	
+		}
+		function submitGuessToServer(){
+			$http({
+				url: "http://localhost:3000/guesses",
+				method: "POST",
+				data: {
+					"userid": $scope.userid,
+					"phrase": keyword.phrase,
+					"guess": guess
+				}
+			}).success(function(data, status, headers, config){
+				console.log("Submitted that guess successfully!");
+				
+				// Now it's time to show what OTHER people have guessed.
+				$http({
+					url: "http://localhost:3000/guesses/average?phrase=" + keyword.phrase,
+					method: "GET",
+					data: {
+						"phrase": keyword.phrase
+					}
+				}).success(function(data, status, headers, config){
+					console.log("Getting the average guess went swimmingly!");
+					var index = keyword.years.map(function(data){ return data.year }).indexOf("Avg.")
+					if( index == "-1" ) {
+						keyword.years.push({year: "Avg.", count: Math.round(data[0].average) });
+					}	
+				}).error(function(data, status, headers, config){
+					console.log("Getting the average guess for " + keyword.phrase + " bit the dust. Here's why: " + data);			
+				});
+				
+			}).error(function(data, status, headers, config){
+				console.log("Guess submission failed hard. Here's why: " + data);			
+			});
+	
+		};
+		
+		
 	};
 	
 	$scope.barHeight = function(value, data){

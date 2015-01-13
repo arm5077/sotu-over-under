@@ -1,2 +1,3 @@
 constants.js
 .elasticbeanstalk/
+.DS_Store

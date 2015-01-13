@@ -1,10 +1,55 @@
 var keywords = [
 	{
-		"guess": 10,
+		"guess": 0,
 		"phrase": "Clean Energy",
 		"intro": "Chatter chatter chatter. Chat. Chatter chatter chatter. cHatter and more here and htis is another sentence that breaks boundaries. Chatter chatter. Chatte chatter chatter chater. Chatter chatter chatter chatter chatter chat about a cat in a hat with a bat.",
 		"quotes": [
-			"\"So tonight I challenge you to join me in setting a new goal: By 2035, 80 percent of America's electricity will come from <strong>clean energy</strong> sources.\" (2012)"
+			"\"So tonight I challenge you to join me in setting a new goal: By 2035, 80 percent of America's electricity will come from <strong>clean energy</strong> sources.\" (2012)",
+			"Hmmm",
+			"3",
+			"4",
+			"5",
+		],
+		"years": [
+	{
+		year: 2009,
+		count: 20
+	},
+	{
+		year: 2010,
+		count: 15
+	},
+	{
+		year: 2011,
+		count: 0
+	},
+	{
+		year: 2012,
+		count: 14
+	},
+	{
+		year: 2013,
+		count: 19
+	},
+	{
+		year: 2014,
+		count: 6
+	}
+]
+		
+	},
+	
+	{
+		"guess": 0,
+		"phrase": "Clean Energy",
+		"intro": "Chatter chatter chatter. Chat. Chatter chatter chatter. cHatter and more here and htis is another sentence that breaks boundaries. Chatter chatter. Chatte chatter chatter chater. Chatter chatter chatter chatter chatter chat about a cat in a hat with a bat.",
+		"quotes": [
+			"\"So tonight I challenge you to join me in setting a new goal: By 2035, 80 percent of America's electricity will come from <strong>clean energy</strong> sources.\" (2012)",
+			"\"Another thing that, yes, mentions <strong>clean energy</strong>.\" (2011)",
+			"Hmmm",
+			"3",
+			"4",
+			"5",
 		],
 		"years": [
 	{

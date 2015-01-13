@@ -7,6 +7,8 @@
 	
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.5/angular-animate.min.js"></script>
+	
 	<script src="http://d3js.org/d3.v3.js" charset="utf-8"></script> 
 	
 	<!-- jQuery mobile -->
@@ -22,27 +24,28 @@
 	
 	<div class="content" ng-controller="sotuController">
 	
-		<div class="guessContainer" ng-repeat="keyword in keywords">
+		<div class="guessContainer" ng-repeat="keyword in keywords"  ng-init="submitted='submit'" number="{{$index + 1}}" >
 			<h1>{{ keyword.phrase }}</h1>
 			<p>{{ keyword.intro }}</p>
 			<div class="quoteBox">
-				<div class="quote" ng-repeat="quote in keyword.quotes">{{ quote }}</div>
+				<div class="quote" ng-show="currentQuote == $index" ng-repeat="quote in keyword.quotes" ng-bind-html="renderHTML(quote)"></div>
 			</div>
 			<div class="chart">
 				<div class="header">
 					Number of "clean energy" SOTU mentions, by year
 				</div>
 				<div class="chartContainer" height="{{ chartHeight }}px">
-					<bar ng-repeat="year in keyword.years" style="width: {{barWidth(year.count, keyword.years)}}%; height: {{barHeight(year.count, keyword.years)}}px; top: {{barTop(year.count, keyword.years)}}px; left: {{barLeft(year.year, keyword.years)}}%; color: {{barColor(year.count, keyword.years)}}; background-color: {{barBackgroundColor(year.count, keyword.years)}}">{{ year.count }}</bar>
+					<bar ng-repeat="year in keyword.years" year="{{year.year}}" style="width: {{barWidth(year.count, keyword.years)}}%; height: {{barHeight(year.count, keyword.years)}}px; top: {{barTop(year.count, keyword.years)}}px; left: {{barLeft(year.year, keyword.years)}}%; color: {{barColor(year.count, year.year, keyword.years)}}; background-color: {{barBackgroundColor(year.count, year.year, keyword.years)}}">{{ year.count }}</bar>
 				</div>
 			</div>
 			<p class="center">In his upcoming SOTU, how many times do you think Obama will mention <strong>{{ keyword.phrase.toLowerCase() }}</strong>?</p>			
-			{{keyword.guess}}
-			<div class="sliderBox" ng-mousedown = "insertBar(keyword)">
-				<input type="range" name="slider-fill" data-highlight="true" min="0" max="25" ng-model="keyword.guess" ng-change="applyGuess(keyword.guess, keyword)">
+			<div ng-class="{sliderBox: submitted != 'submitted', 'sliderBox disabled': submitted == 'submitted'}" ng-mousedown = "insertBar(keyword)">
+				<input type="text" ng-model="keyword.guess" ng-change="applyGuess(keyword.guess, keyword)" />
+				<input type="range" name="slider-fill" data-highlight="true" min="0" max="40" ng-model="keyword.guess" ng-click="applyGuess(keyword.guess, keyword)" ng-change="applyGuess(keyword.guess, keyword)">
+				<div style="clear:both"></div>
 			</div>
 			<div class="buttonBox">
-				<input type="button" value="Go" data-inline="true" data-mini="true" />
+				<input type="button" ng-class="{submitted: submitted == 'submitted'}" value="{{submitted}}" ng-click="submitGuess(keyword.guess, keyword); submitted = 'submitted';" />
 			</div>
 		</div>
 		

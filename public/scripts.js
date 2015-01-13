@@ -1,24 +1,53 @@
-app = angular.module("sotuApp", []);
+app = angular.module("sotuApp", ['ngAnimate']);
 
-app.controller("sotuController", ["$scope", function($scope){
+app.controller("sotuController", ["$scope", "$sce", function($scope, $sce){
 	$scope.keywords = keywords;
 	$scope.chartHeight = 200;
 	$scope.padding = .1;
 	$scope.minHeight = 30;
+	$scope.currentQuote = 0;
 	
+	// Start rotating quotes
+	window.setInterval( function(){
+		$scope.$apply(function(){
+			if( $scope.currentQuote == 4) 
+				$scope.currentQuote = 0;
+			else
+				$scope.currentQuote++;
+		});
+	},4000);
+	
+	$scope.renderHTML = function(html){
+		return $sce.trustAsHtml(html);
+	};
+		
 	$scope.insertBar = function(keyword){
 	//	keyword.years.push({year:2015, count:20});
 		
 	};
 	
 	$scope.applyGuess = function(value, data){
-		if( data.years.map(function(data){ return data.year }).indexOf(2015) == "-1" ) {
+		// Make sure submitted number is actually a number and not "F U NJ!!"
+		if( isNaN(value) ) value = 0;
+		var index = data.years.map(function(data){ return data.year }).indexOf(2015);
+		if( index == "-1" ) {
 			console.log("yo");
 			data.years.push({year: 2015, count: value});
 		}
 		else {
 			console.log(data.years);
-			data.years[data.years.length - 1].count = value;
+			data.years[index].count = value;
+		}
+	};
+
+	$scope.submitGuess = function(guess, data){
+		// database call goes here
+		if(data.years.map(function(data){ return data.year }).indexOf(2015) == "-1") 
+			data.years.push({year: 2015, count: guess});
+			
+		var index = data.years.map(function(data){ return data.year }).indexOf("Avg.")
+		if( index == "-1" ) {
+			data.years.push({year: "Avg.", count: 5});
 		}
 	};
 	
@@ -49,18 +78,45 @@ app.controller("sotuController", ["$scope", function($scope){
 		return index * $scope.barWidth(value, data) + (index * $scope.padding * (100 / (data.length -1) ) );
 	};
 	
-	$scope.barColor = function(value, data) {
-		if( value == 0 )
-			return "rgba(250,166,26,1)";
+	$scope.barColor = function(count, year, keyword) {
+		if( count == 0 ){
+			switch(year){
+				case 2015: 
+					return "rgba(118,182,227,1)"
+				break;
+				case "Avg.": 
+					return "rgba(38,126,193, 1)";
+				break;
+				default:
+					return "rgba(250,166,26,1)";
+				break;
+			}
+			
+		}
 		else
 			return "rgba(255,255,255,1)";
 	}
 	
-	$scope.barBackgroundColor = function(value, data) {
-		if( value == 0)
-			return "rgba(250,166,26,0)";
+	$scope.barBackgroundColor = function(count, year, keyword) {
+		if( count == 0){
+			switch(year){
+				case 2015:
+					return "rgba(118,182,227, 0)";
+				case "Avg.": 
+					return "rgba(38,126,193, 0)";
+				default: 
+					return "rgba(250,166,26,0)";
+			}
+		}
 		else
-			return "rgba(250,166,26,1)";
+			switch(year){
+				case 2015:
+					return "rgba(118,182,227,1)";
+				case "Avg.": 
+					return "rgba(38,126,193,1)";
+				default: 
+					return "rgba(250,166,26,1)";
+			}
 	}
 	
 }]);
@@ -75,7 +131,7 @@ app.directive("bar", function() {
 				top: scope.barTop(scope.year.count, scope.keyword.years) + "px",
 				left: scope.barLeft(scope.year.year, scope.keyword.years) + "%",
 				color: scope.barColor(scope.year.count, scope.keyword.years),
-				backgroundColor: scope.barBackgroundColor(scope.year.count, scope.keyword.years)
+				backgroundColor: scope.barBackgroundColor(scope.year.count, scope.year.year, scope.keyword.years)
 			});
 		}
 	};	

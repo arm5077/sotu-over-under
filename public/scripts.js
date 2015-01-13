@@ -1,6 +1,11 @@
 app = angular.module("sotuApp", ['ngAnimate']);
 
-app.controller("sotuController", ["$scope", "$sce", function($scope, $sce){
+app.controller("sotuController", ["$scope", "$sce", "$http", function($scope, $sce, $http){
+	$scope.userid = uuid.v4();
+	console.log($scope.userid);
+	$scope.email = "";
+	$scope.facebookid = "";
+	$scope.submitted_or_registered_yet = false;
 	$scope.keywords = keywords;
 	$scope.chartHeight = 200;
 	$scope.padding = .1;
@@ -41,10 +46,27 @@ app.controller("sotuController", ["$scope", "$sce", function($scope, $sce){
 	};
 
 	$scope.submitGuess = function(guess, data){
-		// database call goes here
+		// See if they haven't actually selected anything;
+		// if they haven't (sillies!) then default to 0
 		if(data.years.map(function(data){ return data.year }).indexOf(2015) == "-1") 
 			data.years.push({year: 2015, count: guess});
-			
+		
+		// If they haven't submitted/registered before, register them as a user first
+		if( !$scope.submitted_or_registered_yet )
+		$http({
+			url: "http://localhost:3000/users",
+			method: "POST",
+			data: {
+				"userid": $scope.userid,
+				"email": $scope.email,
+				"facebookid": $scope.facebookid
+			}
+		}).success(function(data, status, headers, config){
+			console.log("User data submitted and accepted with gusto!");
+		}).error(function(data, status, headers, config){
+			console.log("User submission failed hard. Here's why: " + data);			
+		});
+		
 		var index = data.years.map(function(data){ return data.year }).indexOf("Avg.")
 		if( index == "-1" ) {
 			data.years.push({year: "Avg.", count: 5});

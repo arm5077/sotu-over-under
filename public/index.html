@@ -11,8 +11,11 @@
 	
 	<script src="http://d3js.org/d3.v3.js" charset="utf-8"></script> 
 	
+	<!-- UUID generator library -->
+	<script src="uuid.js" charset="utf-8"></script> 
+	
 	<!-- jQuery mobile -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	
 
 	
 	<link href="styles.css" rel="stylesheet">
@@ -38,7 +41,7 @@
 					<bar ng-repeat="year in keyword.years" year="{{year.year}}" style="width: {{barWidth(year.count, keyword.years)}}%; height: {{barHeight(year.count, keyword.years)}}px; top: {{barTop(year.count, keyword.years)}}px; left: {{barLeft(year.year, keyword.years)}}%; color: {{barColor(year.count, year.year, keyword.years)}}; background-color: {{barBackgroundColor(year.count, year.year, keyword.years)}}">{{ year.count }}</bar>
 				</div>
 			</div>
-			<p class="center">In his upcoming SOTU, how many times do you think Obama will mention <strong>{{ keyword.phrase.toLowerCase() }}</strong>?</p>			
+			<p>In his upcoming SOTU, how many times do you think Obama will mention <strong>{{ keyword.phrase.toLowerCase() }}</strong>?</p>			
 			<div ng-class="{sliderBox: submitted != 'submitted', 'sliderBox disabled': submitted == 'submitted'}" ng-mousedown = "insertBar(keyword)">
 				<input type="text" ng-model="keyword.guess" ng-change="applyGuess(keyword.guess, keyword)" />
 				<input type="range" name="slider-fill" data-highlight="true" min="0" max="40" ng-model="keyword.guess" ng-click="applyGuess(keyword.guess, keyword)" ng-change="applyGuess(keyword.guess, keyword)">

@@ -10,9 +10,10 @@
   "author": "Andrew McGill",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "~1.10.1",
     "express": "~4.10.7",
-    "mysql": "^2.5.4",
-    "body-parser": "~1.10.1"
+    "mocha": "^2.1.0",
+    "mysql": "^2.5.4"
   },
   "devDependencies": {
     "mocha": "~2.1.0",

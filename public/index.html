@@ -5,28 +5,39 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF8">	
 	
-	
+	<!-- Angular.js -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.5/angular-animate.min.js"></script>
 	
+	<!-- I just use D3 for the d3.map function... probably should just get rid of it -->
 	<script src="http://d3js.org/d3.v3.js" charset="utf-8"></script> 
 	
 	<!-- UUID generator library -->
 	<script src="uuid.js" charset="utf-8"></script> 
 	
-	<!-- jQuery mobile -->
-	
+	<!-- FontAwesome -->
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-	
+	<!-- Local styles -->
 	<link href="styles.css" rel="stylesheet">
-	
-
 <head>
 
 <body>
-	
 	<div class="content" ng-controller="sotuController">
-	
+		<div class="login" >
+			<h1>Save your place</h1>
+			<h2>Log in to save your score and check back after the speech to see how you did.</h2>
+			<label>Email</label>
+			<input type="text" placeholder="you@email.com" ng-model="email"/>
+			<input type="button" value="Go" ng-click="submitUser()">
+			<label id="or">or</label>
+			<input type="button" class="facebook" value="Sign on using Facebook" ng-click="FBlogin()" />
+		</div>
+		
+		<div class="success">
+			<i class="fa fa-check-circle"></i> You're logged in!
+		</div>
+		
 		<div class="guessContainer" ng-repeat="keyword in keywords"  ng-init="submitted='submit'" number="{{$index + 1}}" >
 			<h1>{{ keyword.phrase }}</h1>
 			<p>{{ keyword.intro }}</p>
@@ -55,9 +66,15 @@
 			
 	</div>
 	
+	<button onclick="clickButton()">fdfd</button>
+	
 </body>
 
 <script type = "text/javascript" src="data.json"></script>
-	<script type="text/javascript" src="scripts.js"></script>
+<script type="text/javascript" src="scripts.js"></script>
+
+<script>
+  
+</script>
 
 </html>

@@ -36,7 +36,7 @@ app.post("/users", function(request, response){
 			});
 		}
 		else {
-			response.status(409).json("User already exists!");
+			response.status(409).json(rows);
 		}
 	});
 

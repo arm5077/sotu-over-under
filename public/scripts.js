@@ -1,6 +1,50 @@
 app = angular.module("sotuApp", ['ngAnimate']);
 
 app.controller("sotuController", ["$scope", "$sce", "$http", function($scope, $sce, $http){
+
+	// This is called with the results from from FB.getLoginStatus().
+	function statusChangeCallback(response) {
+		console.log('statusChangeCallback');
+		if (response.status === 'connected') {
+		// Logged into your app and Facebook.
+			$scope.getEmail();
+		} 
+	}
+	
+	// This function is called when someone finishes with the Login
+	// Button.  See the onlogin handler attached to it in the sample
+	// code below.
+	function checkLoginState() {
+		FB.getLoginStatus(function(response) {
+		statusChangeCallback(response);
+		});
+	}
+	
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId      : '337779369755179',
+			cookie     : true,  // enable cookies to allow the server to access 
+								// the session
+			xfbml      : true,  // parse social plugins on this page
+			version    : 'v2.1' // use version 2.1
+		});
+		
+		FB.getLoginStatus(function(response) {
+			statusChangeCallback(response);
+		});
+	
+	};
+	
+	// Load the SDK asynchronously
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+
+
 	$scope.userid = uuid.v4();
 	console.log($scope.userid);
 	$scope.email = "";
@@ -11,6 +55,19 @@ app.controller("sotuController", ["$scope", "$sce", "$http", function($scope, $s
 	$scope.padding = .1;
 	$scope.minHeight = 30;
 	$scope.currentQuote = 0;
+	$scope.FBlogin = function(){
+		FB.login(function(response){
+			$scope.getEmail();
+		});
+	};
+	$scope.getEmail = function(){
+		FB.api('/me', function(response) {
+			$scope.email=response.email;
+			console.log(response);
+			$scope.submitUser();
+		},{scope: "public_profile, email"});
+	};
+	
 	
 	// Start rotating quotes
 	window.setInterval( function(){
@@ -44,6 +101,26 @@ app.controller("sotuController", ["$scope", "$sce", "$http", function($scope, $s
 		}
 	};
 
+	$scope.submitUser = function(callback){
+		$http({
+			url: "/users",
+			method: "POST",
+			data: {
+				"userid": $scope.userid,
+				"email": $scope.email,
+				"facebookid": $scope.facebookid
+			}
+		}).success(function(data, status, headers, config){
+			console.log("User data submitted and accepted with gusto!");
+			$scope.submitted_or_registered_yet = true;
+			if(callback) callback();
+		}).error(function(data, status, headers, config){
+			console.log("Looks like there's already a record in the system! Updating " + $scope.userid + " to equal " + data[0].userid + ".");
+			$scope.userid = data[0].userid;
+			$scope.submitted_or_registered_yet = true;
+		});
+	};
+	
 	$scope.submitGuess = function(guess, keyword){
 		// See if they haven't actually selected anything;
 		// if they haven't (sillies!) then default to 0
@@ -52,20 +129,8 @@ app.controller("sotuController", ["$scope", "$sce", "$http", function($scope, $s
 		
 		// If they haven't submitted/registered before, register them as a user first
 		if( !$scope.submitted_or_registered_yet ) {
-			$http({
-				url: "/users",
-				method: "POST",
-				data: {
-					"userid": $scope.userid,
-					"email": $scope.email,
-					"facebookid": $scope.facebookid
-				}
-			}).success(function(data, status, headers, config){
-				console.log("User data submitted and accepted with gusto!");
-				$scope.submitted_or_registered_yet = true;
+			$scope.submitUser(function(){ 
 				submitGuessToServer();
-			}).error(function(data, status, headers, config){
-				console.log("User submission failed hard. Here's why: " + data);			
 			});
 		}
 		// This is for if their userid already exists on the database
@@ -197,3 +262,7 @@ app.directive("bar", function() {
 	 
 });
 
+
+
+
+  

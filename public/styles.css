@@ -352,7 +352,7 @@ body {
 				}
 			
 				.content .guessContainer .buttonBox input.submitted {
-					background-color:#76B6E3;
+					opacity: .5
 				}
 					.content .guessContainer .buttonBox input.submitted:hover {
 						cursor:default;

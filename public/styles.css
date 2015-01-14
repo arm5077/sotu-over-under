@@ -478,6 +478,12 @@ body {
 				background-color: #FAA61A !important;
 			}	
 		
+@media only screen AND (max-width : 750px) {		
+	.content ul.legend li {
+		display: block;
+		margin-bottom: 5px;
+	}
+}
 @media only screen AND (max-width : 500px) {
 
 	.content {
@@ -524,7 +530,7 @@ body {
 		width: 100%;
 	}
 	
-	.content .guessContainer h1 {
+	.content .guessContainer h1.phrase {
 		font-size:30pt;
 	}
 	

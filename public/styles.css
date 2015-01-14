@@ -1,25 +1,45 @@
 @font-face {
-	font-family: "FreightSans";
-	font-weight:400;
-	src: url("fonts/FreigSanProMed.otf") format("opentype");
+    font-family: 'FreightSans';
+    src: url('fonts/freigsanprolig-webfont.eot');
+    src: url('fonts/freigsanprolig-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/freigsanprolig-webfont.woff2') format('woff2'),
+         url('fonts/freigsanprolig-webfont.woff') format('woff'),
+         url('fonts/freigsanprolig-webfont.ttf') format('truetype'),
+         url('fonts/freigsanprolig-webfont.svg#freightsans_prolight') format('svg');
+    font-weight: 100;
 }
 
 @font-face {
-	font-family: "FreightSans";
-	font-weight: 600;
-	src: url("fonts/FreigSanProSem.otf") format("opentype");
+    font-family: 'FreightSans';
+    src: url('fonts/freigsanpromed-webfont.eot');
+    src: url('fonts/freigsanpromed-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/freigsanpromed-webfont.woff2') format('woff2'),
+         url('fonts/freigsanpromed-webfont.woff') format('woff'),
+         url('fonts/freigsanpromed-webfont.ttf') format('truetype'),
+         url('fonts/freigsanpromed-webfont.svg#freightsans_promedium') format('svg');
+    font-weight: 400;
 }
 
 @font-face {
-	font-family: "FreightSans";
-	font-weight: 800;
-	src: url("fonts/FreigSanProBold.otf") format("opentype");
+    font-family: 'FreightSans';
+    src: url('fonts/freigsanprosem-webfont.eot');
+    src: url('fonts/freigsanprosem-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/freigsanprosem-webfont.woff2') format('woff2'),
+         url('fonts/freigsanprosem-webfont.woff') format('woff'),
+         url('fonts/freigsanprosem-webfont.ttf') format('truetype'),
+         url('fonts/freigsanprosem-webfont.svg#freightsans_prosemibold') format('svg');
+    font-weight: 600;
 }
 
 @font-face {
-	font-family: "FreightSans";
-	font-weight: 100;
-	src: url("fonts/FreigSanProLig.otf") format("opentype");
+    font-family: 'FreightSans';
+    src: url('fonts/freigsanprobold-webfont.eot');
+    src: url('fonts/freigsanprobold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/freigsanprobold-webfont.woff2') format('woff2'),
+         url('fonts/freigsanprobold-webfont.woff') format('woff'),
+         url('fonts/freigsanprobold-webfont.ttf') format('truetype'),
+         url('fonts/freigsanprobold-webfont.svg#freightsans_probold') format('svg');
+    font-weight: 900;
 }
 
 .center {
@@ -35,7 +55,7 @@ body {
 
 .content {
 	width: 90%;
-	max-width:600px;
+	max-width:700px;
 	margin:auto;
 }
 
@@ -62,7 +82,7 @@ body {
 		}
 
 		.content .guessContainer h1 {
-			font-family: FreightSans;
+			font-family: FreightSans, Helvetica, Arial, sans-serif;
 			font-weight:600;
 			font-size:40pt;
 			color: #FAA61A;
@@ -85,7 +105,7 @@ body {
 				.content .guessContainer h1:before { content: "\201C"; }
 			
 		.content .guessContainer p {
-			font-family: "FreightSans";
+			font-family: "FreightSans", Helvetica, Arial, sans-serif;
 			font-weight: 400;
 			font-size: 14pt;
 			width:100%;
@@ -168,7 +188,7 @@ body {
 					}
 					
 		.content .guessContainer .chart {
-			width: 70%;
+			width: 80%;
 			margin: 35px auto 30px;
 			border-top: 4px solid rgba(0,0,0,1);
 			border-bottom: 1px solid rgba(0,0,0,.4);
@@ -228,7 +248,7 @@ body {
 				width:8%;
 				margin-right: 2%;
 				float:left;
-				font-family: FreightSans;
+				font-family: FreightSans, sans-serif;
 				font-size: 14pt;
 				border: 1px solid lightgray;
 				text-align: Center;
@@ -240,12 +260,21 @@ body {
 			
 			.content .guessContainer .sliderBox input[type=range]{
 			    -webkit-appearance: none;
-				width: 87%;
+				width: 89%;
 				float:left;
 			}
-
+			
+			@-moz-document url-prefix() {
+				.content .guessContainer .sliderBox input[type=range]{
+					
+					width: 84%;
+					float:left;
+				}
+	
+			}
+			
 			.content .guessContainer .sliderBox input[type=range]::-webkit-slider-runnable-track {
-				width:100%;
+				
 			    height: 5px;
 			    background: #ddd;
 			    border: none;
@@ -262,6 +291,16 @@ body {
 			    margin-top: -12px;
 				cursor:pointer;
 			}
+			
+			.content .guessContainer .sliderBox input[type=range]::-moz-range-thumb {
+				border: none;
+			    height: 30px;
+			    width: 30px;
+			    border-radius: 50%;
+			    background: #FAA61A;
+			    margin-top: -12px;
+				cursor:pointer;
+			}
 
 			.content .guessContainer .sliderBox input[type=range]:focus {
 			    outline: none;
@@ -270,7 +309,11 @@ body {
 			.content .guessContainer .sliderBox input[type=range]:focus::-webkit-slider-runnable-track {
 			    background: #ccc;
 			}
-
+			
+			.content .guessContainer .sliderBox input[type=range]::-moz-range-track {
+				 background: #ccc;
+			}	
+			
 		.content .guessContainer .buttonBox {
 			width:100%;
 			//float:left;
@@ -313,7 +356,43 @@ body {
 				background-color: #FAA61A !important;
 			}	
 		
-		
-		
-		
-		
+@media only screen AND (max-width : 500px) {
+	.content .guessContainer:before {
+		display: block;
+		width: 30%;
+		font-size: 20pt;
+		margin:0px auto 10px;
+		position: relative;
+		left: 0;
+		top: 0;
+		text-align:center;
+		line-height: 45px;
+		display:none;
+	}
+	
+	.content .guessContainer .quoteBox {
+		width: 100%;
+		height:60px;
+	}
+	
+	.content .guessContainer .chart {
+		width: 100%;
+	}
+	
+	.content .guessContainer .sliderBox {
+		margin: 40px 0px 8px;
+	}
+	
+	.content .guessContainer .sliderBox input[type=range] {
+		width: 80%;
+	}
+	
+	.content .guessContainer .sliderBox input[type=text] {
+		width: 13%;
+	}
+	
+	.content .guessContainer .buttonBox input {
+		width: 100%;
+	}
+	
+}

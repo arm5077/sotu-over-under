@@ -392,7 +392,8 @@ body {
 	}
 	
 	.content .guessContainer .sliderBox {
-		margin: 40px 0px 8px;
+		margin: 20px 0px 8px;
+		width:100%;
 	}
 	
 	.content .guessContainer .sliderBox input[type=range] {
@@ -423,10 +424,6 @@ body {
 		font-size: 10pt;
 	}
 	
-	.content .guessContainer .sliderBox {
-		width:100%;
-	}
-	
 	.content .guessContainer .sliderBox input[type=text] {
 		width: 100%;
 		display:none;
@@ -434,7 +431,6 @@ body {
 	
 	.content .guessContainer .sliderBox input[type=range] {
 		width: 100%;
-		margin-top: 10px;
 	}
 	
 }

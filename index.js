@@ -8,11 +8,14 @@ app.use( bodyparser.json() );
 app.use( bodyparser.urlencoded({ extended: false }) );
 
 var connection = mysql.createConnection({
-  host     : process.env.database_host,
-  user     : process.env.database_user,
-  password : process.env.database_password
+  host     : process.env.RDS_HOSTNAME,
+  user     : process.env.RDS_USERNAME,
+  password : process.env.RDS_PASSWORD,
+  port 	   : process.env.RDS_PORT
 });
 
+
+console.log(process.env.database_user);
 connection.query("SHOW DATABASES", function(err,rows,fields){
 	if (err) throw err;
 	console.log("Yo: " + fields[0]);	

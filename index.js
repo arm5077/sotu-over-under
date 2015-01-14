@@ -76,8 +76,9 @@ app.get("/users", function(request, response){
 
 // Submit guess
 app.post("/guesses", function(request, response){
+	console.log( JSON.stringify(request.body) );
 	// Make sure they've included all the required fields
-	if( request.body.userid && request.body.phrase && request.body.guess ) {
+	if( request.body.userid && request.body.phrase && (request.body.guess || request.body.guess == 0 )  ) {
 		connection.query("INSERT INTO sotu.guesses (userid, phrase, guess, date) values (?,?,?,?) ON DUPLICATE KEY UPDATE guess = ?", [request.body.userid,request.body.phrase,request.body.guess, getTimestamp(),request.body.guess ], function(err, rows, fields){
 			if( err ) throw err; 
 			response.status(200).json(rows);

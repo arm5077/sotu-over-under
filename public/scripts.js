@@ -1,10 +1,8 @@
-var pymChild = new pym.Child();
 
 app = angular.module("sotuApp", ['ngAnimate']);
 
-setInterval(function(){ pymChild.sendHeight(); }, 1000);
 
-app.controller("sotuController", ["$scope", "$sce", "$http", function($scope, $sce, $http){
+app.controller("sotuController", ["$scope", "$sce", "$http", "$compile", function($scope, $sce, $http, $compile){
 	
 	
 	
@@ -55,12 +53,14 @@ app.controller("sotuController", ["$scope", "$sce", "$http", function($scope, $s
 	console.log($scope.userid);
 	$scope.email = "";
 	$scope.facebookid = "";
-	$scope.submitted_or_registered_yet = false;
+	$scope.submitted_yet = false;
+	$scope.registered_yet = false;
 	$scope.keywords = keywords;
 	$scope.chartHeight = 200;
 	$scope.padding = .1;
 	$scope.minHeight = 30;
 	$scope.currentQuote = 0;
+	
 	$scope.FBlogin = function(){
 		FB.login(function(response){
 			$scope.getEmail();
@@ -71,6 +71,7 @@ app.controller("sotuController", ["$scope", "$sce", "$http", function($scope, $s
 			$scope.email=response.email;
 			console.log(response);
 			$scope.submitUser();
+			$scope.registered_yet = true;
 		},{scope: "public_profile, email"});
 	};
 	
@@ -83,12 +84,17 @@ app.controller("sotuController", ["$scope", "$sce", "$http", function($scope, $s
 			else
 				$scope.currentQuote++;
 		});
-	},4000);
+	},7000);
 	
 	$scope.renderHTML = function(html){
 		return $sce.trustAsHtml(html);
 	};
 		
+	$scope.insertLogin = function($event){
+		angular.element($event.target).parent().parent().append($compile("<login></login")($scope));
+		//$event.target.parentNode.parentNode.appendChild(document.createElement("login"));
+	};
+	
 	$scope.insertBar = function(keyword){
 	//	keyword.years.push({year:2015, count:20});
 		
@@ -118,23 +124,26 @@ app.controller("sotuController", ["$scope", "$sce", "$http", function($scope, $s
 			}
 		}).success(function(data, status, headers, config){
 			console.log("User data submitted and accepted with gusto!");
-			$scope.submitted_or_registered_yet = true;
+			$scope.submitted_yet = true;
 			if(callback) callback();
 		}).error(function(data, status, headers, config){
 			console.log("Looks like there's already a record in the system! Updating " + $scope.userid + " to equal " + data[0].userid + ".");
 			$scope.userid = data[0].userid;
-			$scope.submitted_or_registered_yet = true;
+			$scope.submitted_yet = true;
 		});
 	};
 	
 	$scope.submitGuess = function(guess, keyword){
 		// See if they haven't actually selected anything;
 		// if they haven't (sillies!) then default to 0
-		if(keyword.years.map(function(keyword){ return keyword.year }).indexOf(2015) == "-1") 
+		if(keyword.years.map(function(keyword){ return keyword.year }).indexOf(2015) == "-1") {
+			console.log("This daft fellow didn't make a guess. Zero points for Griffyndor!");
+			guess = 0;
 			keyword.years.push({year: 2015, count: guess});
+		}
 		
 		// If they haven't submitted/registered before, register them as a user first
-		if( !$scope.submitted_or_registered_yet ) {
+		if( !$scope.submitted_yet || !$scope.registered_yet) {
 			$scope.submitUser(function(){ 
 				submitGuessToServer();
 			});
@@ -143,7 +152,9 @@ app.controller("sotuController", ["$scope", "$sce", "$http", function($scope, $s
 		else {
 			submitGuessToServer();	
 		}
+		
 		function submitGuessToServer(){
+			console.log(keyword.phrase);
 			$http({
 				url: "/guesses",
 				method: "POST",
@@ -268,6 +279,12 @@ app.directive("bar", function() {
 	 
 });
 
+app.directive("login", function(){
+	return {
+		restrict: 'E', 
+		templateUrl: 'login.html'
+	}
+});
 
 
 

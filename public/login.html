@@ -1,0 +1,13 @@
+<div class="login" ng-hide="registered_yet">
+	<h1>Save your place</h1>
+	<h2>Log in to save your score and check back after the speech to see how you did.</h2>
+	<label>Email</label>
+	<input type="text" placeholder="you@email.com" ng-model="email"/>
+	<input type="button" value="Go" ng-click="submitUser(); registered_yet=true">
+	<label id="or">or</label>
+	<input type="button" class="facebook" value="Sign on using Facebook" ng-click="FBlogin()" />
+</div>
+
+<div class="success" ng-show="registered_yet">
+	<i class="fa fa-check-circle"></i> You're logged in!
+</div>

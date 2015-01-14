@@ -27,22 +27,11 @@
 
 <body>
 	<div class="content" ng-controller="sotuController">
-		<div class="login" >
-			<h1>Save your place</h1>
-			<h2>Log in to save your score and check back after the speech to see how you did.</h2>
-			<label>Email</label>
-			<input type="text" placeholder="you@email.com" ng-model="email"/>
-			<input type="button" value="Go" ng-click="submitUser()">
-			<label id="or">or</label>
-			<input type="button" class="facebook" value="Sign on using Facebook" ng-click="FBlogin()" />
-		</div>
-		
-		<div class="success">
+		<div class="success" ng-show="registered_yet">
 			<i class="fa fa-check-circle"></i> You're logged in!
 		</div>
-		
 		<div class="guessContainer" ng-repeat="keyword in keywords"  ng-init="submitted='submit'" number="{{$index + 1}}" >
-			<h1>{{ keyword.phrase }}</h1>
+			<h1 class="phrase">{{ keyword.phrase }}</h1>
 			<p>{{ keyword.intro }}</p>
 			<div class="quoteBox">
 				<div class="quote" ng-show="currentQuote == $index" ng-repeat="quote in keyword.quotes" ng-bind-html="renderHTML(quote)"></div>
@@ -62,18 +51,25 @@
 				<div style="clear:both"></div>
 			</div>
 			<div class="buttonBox">
-				<input type="button" ng-class="{submitted: submitted == 'submitted'}" value="{{submitted}}" ng-click="submitGuess(keyword.guess, keyword); submitted = 'submitted';" />
+				<input type="button" ng-class="{'submit submitted': submitted == 'submitted', submit: submitted != 'submitted'}" value="{{submitted}}" ng-click="submitGuess(keyword.guess, keyword); submitted = 'submitted';" />
+				<input type="button" class="register" ng-hide="registered_yet" ng-click="insertLogin($event)" value="Register to save" />
 			</div>
 		</div>
 		
 			
 	</div>
 	
-	<button onclick="clickButton()">fdfd</button>
 	
 </body>
 
+<script>
+var pymChild = new pym.Child();
+setInterval(function(){ pymChild.sendHeight(); }, 1000);
+</script>
+
 <script type = "text/javascript" src="data.json"></script>
 <script type="text/javascript" src="scripts.js"></script>
+
+
 
 </html>

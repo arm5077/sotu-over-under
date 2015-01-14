@@ -1,5 +1,6 @@
 @font-face {
-    font-family: 'FreightSans';
+    font-family: 'FreightSans';	
+	src: url("fonts/FreigSanProLig.otf") format("opentype");
     src: url('fonts/freigsanprolig-webfont.eot');
     src: url('fonts/freigsanprolig-webfont.eot?#iefix') format('embedded-opentype'),
          url('fonts/freigsanprolig-webfont.woff2') format('woff2'),
@@ -11,6 +12,7 @@
 
 @font-face {
     font-family: 'FreightSans';
+	src: url("fonts/FreigSanProMed.otf") format("opentype");
     src: url('fonts/freigsanpromed-webfont.eot');
     src: url('fonts/freigsanpromed-webfont.eot?#iefix') format('embedded-opentype'),
          url('fonts/freigsanpromed-webfont.woff2') format('woff2'),
@@ -22,6 +24,8 @@
 
 @font-face {
     font-family: 'FreightSans';
+	
+	src: url("fonts/FreigSanProSem.otf") format("opentype");
     src: url('fonts/freigsanprosem-webfont.eot');
     src: url('fonts/freigsanprosem-webfont.eot?#iefix') format('embedded-opentype'),
          url('fonts/freigsanprosem-webfont.woff2') format('woff2'),
@@ -33,6 +37,7 @@
 
 @font-face {
     font-family: 'FreightSans';
+	src: url("fonts/FreigSanProBold.otf") format("opentype")
     src: url('fonts/freigsanprobold-webfont.eot');
     src: url('fonts/freigsanprobold-webfont.eot?#iefix') format('embedded-opentype'),
          url('fonts/freigsanprobold-webfont.woff2') format('woff2'),
@@ -322,6 +327,7 @@ body {
 		}
 		
 			.content .guessContainer .buttonBox input {
+				-webkit-appearance: none;
 				font-family: FreightSans, sans-serif; 
 				margin: 20px auto 0px;
 				border:none;
@@ -357,6 +363,11 @@ body {
 			}	
 		
 @media only screen AND (max-width : 500px) {
+
+	.content {
+		width: 95%;
+	}
+	
 	.content .guessContainer:before {
 		display: block;
 		width: 30%;
@@ -371,8 +382,9 @@ body {
 	}
 	
 	.content .guessContainer .quoteBox {
-		width: 100%;
+		width: 96%;
 		height:60px;
+		padding: 2%;
 	}
 	
 	.content .guessContainer .chart {
@@ -393,6 +405,35 @@ body {
 	
 	.content .guessContainer .buttonBox input {
 		width: 100%;
+	}
+	
+	.content .guessContainer h1 {
+		font-size:30pt;
+	}
+	
+	.content .guessContainer p {
+		font-size:12pt;
+	}
+	
+	.content .guessContainer .quoteBox {
+		min-height: 70px;
+	}
+	
+	.content .guessContainer .chart .chartContainer bar:after {
+		font-size: 10pt;
+	}
+	
+	.content .guessContainer .sliderBox {
+		width:100%;
+	}
+	
+	.content .guessContainer .sliderBox input[type=text] {
+		width: 100%;
+	}
+	
+	.content .guessContainer .sliderBox input[type=range] {
+		width: 100%;
+		margin-top: 25px;
 	}
 	
 }

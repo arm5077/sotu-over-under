@@ -1,7 +1,13 @@
+var pymChild = new pym.Child();
+
 app = angular.module("sotuApp", ['ngAnimate']);
 
-app.controller("sotuController", ["$scope", "$sce", "$http", function($scope, $sce, $http){
+setInterval(function(){ pymChild.sendHeight(); }, 1000);
 
+app.controller("sotuController", ["$scope", "$sce", "$http", function($scope, $sce, $http){
+	
+	
+	
 	// This is called with the results from from FB.getLoginStatus().
 	function statusChangeCallback(response) {
 		console.log('statusChangeCallback');

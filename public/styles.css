@@ -416,7 +416,7 @@ body {
 	}
 	
 	.content .guessContainer .quoteBox {
-		min-height: 70px;
+		height: 70px;
 	}
 	
 	.content .guessContainer .chart .chartContainer bar:after {
@@ -429,6 +429,7 @@ body {
 	
 	.content .guessContainer .sliderBox input[type=text] {
 		width: 100%;
+		display:none;
 	}
 	
 	.content .guessContainer .sliderBox input[type=range] {

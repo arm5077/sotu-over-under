@@ -74,7 +74,7 @@ app.controller("sotuController", ["$scope", "$sce", "$http", function($scope, $s
 		}
 		function submitGuessToServer(){
 			$http({
-				url: "http://localhost:3000/guesses",
+				url: "/guesses",
 				method: "POST",
 				data: {
 					"userid": $scope.userid,
@@ -86,7 +86,7 @@ app.controller("sotuController", ["$scope", "$sce", "$http", function($scope, $s
 				
 				// Now it's time to show what OTHER people have guessed.
 				$http({
-					url: "http://localhost:3000/guesses/average?phrase=" + keyword.phrase,
+					url: "guesses/average?phrase=" + keyword.phrase,
 					method: "GET",
 					data: {
 						"phrase": keyword.phrase

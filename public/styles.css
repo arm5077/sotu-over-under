@@ -63,7 +63,34 @@ body {
 	max-width:700px;
 	margin:auto;
 }
+	
+	.content ul.legend {
 		
+	}
+	
+		.content ul.legend li {
+			display:inline-block;
+			font-weight:900;
+			margin-right:15px;
+			font-size:11pt;
+		}
+		
+				.content ul.legend li .block:before {
+					content: "\00a0";
+					width:30px;
+					display:inline-block;
+					margin-right:5px;
+				}
+					.content ul.legend li .block#obamas:before{
+						background-color: #FAA61A;
+					}
+					.content ul.legend li .block#yours:before{
+						background-color: rgba(118,182,227,1);
+					}
+					.content ul.legend li .block#theirs:before{
+						background-color: rgba(38, 126, 193,1);
+					}
+				
 	.content .guessContainer {
 		width:100%;
 		margin-top:30px;

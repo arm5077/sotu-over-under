@@ -53,7 +53,7 @@ app.controller("sotuController", ["$scope", "$sce", "$http", function($scope, $s
 		// If they haven't submitted/registered before, register them as a user first
 		if( !$scope.submitted_or_registered_yet ) {
 			$http({
-				url: "http://localhost:3000/users",
+				url: "/users",
 				method: "POST",
 				data: {
 					"userid": $scope.userid,

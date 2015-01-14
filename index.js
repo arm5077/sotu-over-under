@@ -87,7 +87,7 @@ app.post("/guesses", function(request, response){
 });
 
 // Get average guess for individual question
-app.get("/guesses/average", function(request, response){
+app.get("/guesses/average/", function(request, response){
 	console.log(request.query);
 	if( request.query.phrase ) {
 		connection.query("SELECT phrase, AVG(guess) as average FROM sotu.guesses WHERE phrase = ?", [request.query.phrase], function(err, rows, fields){

@@ -1,23 +1,23 @@
 var keywords = [
 	{
 		"guess": 0,
-		"phrase": "Clean Energy",
+		"phrase": "middle class",
 		"intro": "Chatter chatter chatter. Chat. Chatter chatter chatter. cHatter and more here and htis is another sentence that breaks boundaries. Chatter chatter. Chatte chatter chatter chater. Chatter chatter chatter chatter chatter chat about a cat in a hat with a bat.",
 		"quotes": [
-			"\"So tonight I challenge you to join me in setting a new goal: By 2035, 80 percent of America's electricity will come from <strong>clean energy</strong> sources.\" (2012)",
-			"Hmmm",
-			"3",
-			"4",
-			"5",
+			"\"It is our generation's task, then, to reignite the true engine of America's economic growth: a rising, thriving <strong>middle class</strong>.\" (2013)",
+			"\"Now, the price of college tuition is just one of the burdens facing the <strong>middle class</strong>.\" (2010)",
+			"\"Right now because of loopholes and shelters in the Tax Code, a quarter of all millionaires pay lower tax rates than millions of <strong>middle class</strong> households.\" (2012)",
+			"\"A growing economy that creates good, <strong>middle class jobs</strong>, that must be the north star that guides our efforts.\" (2013)",
+			"\"What I offer tonight is a set of concrete, practical proposals to speed up growth, strengthen the <strong>middle class</strong>, and build new ladders of opportunity into the <strong>middle class</strong>.\" (2014)"
 		],
 		"years": [
 	{
 		year: 2009,
-		count: 20
+		count: 1
 	},
 	{
 		year: 2010,
-		count: 15
+		count: 5
 	},
 	{
 		year: 2011,
@@ -25,15 +25,15 @@ var keywords = [
 	},
 	{
 		year: 2012,
-		count: 14
+		count: 3
 	},
 	{
 		year: 2013,
-		count: 19
+		count: 8
 	},
 	{
 		year: 2014,
-		count: 6
+		count: 5
 	}
 ]
 		
@@ -41,20 +41,99 @@ var keywords = [
 	
 	{
 		"guess": 0,
-		"phrase": "security",
+		"phrase": "health care",
 		"intro": "Chatter chatter chatter. Chat. Chatter chatter chatter. cHatter and more here and htis is another sentence that breaks boundaries. Chatter chatter. Chatte chatter chatter chater. Chatter chatter chatter chatter chatter chat about a cat in a hat with a bat.",
 		"quotes": [
-			"\"So tonight I challenge you to join me in setting a new goal: By 2035, 80 percent of America's electricity will come from <strong>clean energy</strong> sources.\" (2012)",
-			"\"Another thing that, yes, mentions <strong>clean energy</strong>.\" (2011)",
-			"Hmmm",
-			"3",
-			"4",
-			"5",
+			"\"The cost of <strong>health care</strong> eats up more and more of our savings each year, yet we keep delaying reform.\" (2009)",
+			"\"Given these facts, we can no longer afford to put <strong>health care</strong> reform on hold. We can't afford to do it. It's time.\" (2009)",
+			"\"By now it should be fairly obvious that I didn't take on <strong>health care</strong> because it was good politics.\" (2010)",
+			"\"Already, the Affordable Care Act is helping to slow the growth of <strong>health care</strong> costs. And the reforms I'm proposing go even further.\" (2013)",
+			"\"For decades, few things exposed hard-working families to economic hardship more than a broken <strong>health care</strong> system. And in case you haven't heard, we're in the process of fixing that.\" (2014)"
 		],
 		"years": [
 	{
 		year: 2009,
-		count: 20
+		count: 15
+	},
+	{
+		year: 2010,
+		count: 7
+	},
+	{
+		year: 2011,
+		count: 4
+	},
+	{
+		year: 2012,
+		count: 2
+	},
+	{
+		year: 2013,
+		count: 5
+	},
+	{
+		year: 2014,
+		count: 4
+	}
+]
+		
+	},
+	
+	{
+		"guess": 0,
+		"phrase": "jobs",
+		"intro": "Chatter chatter chatter. Chat. Chatter chatter chatter. cHatter and more here and htis is another sentence that breaks boundaries. Chatter chatter. Chatte chatter chatter chater. Chatter chatter chatter chatter chatter chat about a cat in a hat with a bat.",
+		"quotes": [
+			"\"I do not accept a future where the <strong>jobs</strong> and industries of tomorrow take root beyond our borders, and I know you don't either.\" (2009)",
+			"\"That is why <strong>jobs</strong> must be our number-one focus in 2010, and that's why I'm calling for a new <strong>jobs</strong> bill tonight.\" (2010)",
+			"\"The world is changed. The competition for <strong>jobs</strong> is real. But this shouldn't discourage us. It should challenge us.\" (2011)",
+			"\"Ask yourselves what you can do to bring <strong>jobs</strong> back to your country, and your country will do everything we can to help you succeed.\" (2012)",
+			"\"Let's do more to help the entrepreneurs and small-business owners who create most new <strong>jobs</strong> in America.\" (2014)"
+		],
+		"years": [
+	{
+		year: 2009,
+		count: 14
+	},
+	{
+		year: 2010,
+		count: 23
+	},
+	{
+		year: 2011,
+		count: 25
+	},
+	{
+		year: 2012,
+		count: 33
+	},
+	{
+		year: 2013,
+		count: 31
+	},
+	{
+		year: 2014,
+		count: 25
+	}
+]
+		
+	},	
+	
+	{
+		"guess": 0,
+		"phrase": "energy",
+		"intro": "Chatter chatter chatter. Chat. Chatter chatter chatter. cHatter and more here and htis is another sentence that breaks boundaries. Chatter chatter. Chatte chatter chatter chater. Chatter chatter chatter chatter chatter chat about a cat in a hat with a bat.",
+		"quotes": [
+			"\"We should put more Americans to work building clean <strong>energy</strong> facilities and give rebates to Americans who make their homes more <strong>energy</strong> efficient, which supports clean <strong>energy</strong> jobs.\" (2010)",
+			"\"Tonight I challenge you to join me in setting a new goal: By 2035, 80 percent of America's electricity will come from clean <strong>energy</strong> sources.\" (2011)",
+			"\"This country needs an all-out, all-of-the-above strategy that develops every available source of American <strong>energy</strong>, a strategy that's cleaner, cheaper, and full of new jobs.\" (2012)",
+			"\"Today, no area holds more promise than our investments in American <strong>energy</strong>. After years of talking about it, we're finally poised to control our own <strong>energy</strong> future.\" (2013)",
+			"\"The all-of-the-above <strong>energy</strong> strategy I announced a few years ago is working, and today, America is closer to <strong>energy</strong> independence than we have been in decades.\" (2014)"
+		],
+		"years": [
+	{
+		year: 2009,
+		count: 14
 	},
 	{
 		year: 2010,
@@ -62,22 +141,100 @@ var keywords = [
 	},
 	{
 		year: 2011,
-		count: 0
+		count: 9
 	},
 	{
 		year: 2012,
-		count: 14
+		count: 23
 	},
 	{
 		year: 2013,
-		count: 19
+		count: 17
 	},
 	{
 		year: 2014,
-		count: 6
+		count: 8
 	}
 ]
 		
+	},	
+	{
+		"guess": 0,
+		"phrase": "education",
+		"intro": "Chatter chatter chatter. Chat. Chatter chatter chatter. cHatter and more here and htis is another sentence that breaks boundaries. Chatter chatter. Chatte chatter chatter chater. Chatter chatter chatter chatter chatter chat about a cat in a hat with a bat.",
+		"quotes": [
+			"\"In the 21st century, the best antipoverty program around is a world-class <strong>education</strong>.\" (2010)",
+			"\"Over the next 10 years, nearly half of all new jobs will require <strong>education</strong> that goes beyond a high school <strong>education</strong>. And yet as many as a quarter of our students aren't even finishing high school.\" (2011)",
+			"\"Higher <strong>education</strong> can't be a luxury. It is an economic imperative that every family in America should be able to afford.\" (2012)",
+			"\"Why would we choose to make deeper cuts to <strong>education</strong> and Medicare just to protect special interest tax breaks? How is that fair?\" (2013)",
+			"\"Last month, thanks to the work of Democrats and Republicans, Congress finally produced a budget that undoes some of last year's severe cuts to priorities like <strong>education</strong>.\" (2014)"
+		],
+		"years": [
+	{
+		year: 2009,
+		count: 14
+	},
+	{
+		year: 2010,
+		count: 4
+	},
+	{
+		year: 2011,
+		count: 11
+	},
+	{
+		year: 2012,
+		count: 8
+	},
+	{
+		year: 2013,
+		count: 13
+	},
+	{
+		year: 2014,
+		count: 7
 	}
-
+]
+		
+	},
+	{
+		"guess": 0,
+		"phrase": "security",
+		"intro": "Chatter chatter chatter. Chat. Chatter chatter chatter. cHatter and more here and htis is another sentence that breaks boundaries. Chatter chatter. Chatte chatter chatter chater. Chatter chatter chatter chatter chatter chat about a cat in a hat with a bat.",
+		"quotes": [
+			"\"Now, throughout our history, no issue has united this country more than our <strong>security</strong>. Sadly, some of the unity we felt after 9/11 has dissipated.\" (2010)",
+			"\"We've made substantial investments in our homeland <strong>security</strong> and disrupted plots that threatened to take American lives.\" (2010)",
+			"\"We will safeguard America's own <strong>security</strong> against those who threaten our citizens, our friends, and our interests.\" (2012)",
+			"\"We cannot look back years from now and wonder why we did nothing in the face of real threats to our <strong>security</strong> and our economy.\" (2013)",
+			"\"We have to remain vigilant. But I strongly believe our leadership and our <strong>security</strong> cannot depend on our outstanding military alone.\" (2014)"
+		],
+		"years": [
+	{
+		year: 2009,
+		count: 2
+	},
+	{
+		year: 2010,
+		count: 9
+	},
+	{
+		year: 2011,
+		count: 2
+	},
+	{
+		year: 2012,
+		count: 4
+	},
+	{
+		year: 2013,
+		count: 8
+	},
+	{
+		year: 2014,
+		count: 10
+	}
+]
+		
+	},
+	
 ];

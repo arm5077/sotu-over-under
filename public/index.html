@@ -35,7 +35,7 @@
 			</div>
 			<div class="chart">
 				<div class="header">
-					Number of "clean energy" SOTU mentions, by year
+					Number of "{{keyword.phrase}}" SOTU mentions, by year
 				</div>
 				<div class="chartContainer" height="{{ chartHeight }}px">
 					<bar ng-repeat="year in keyword.years" year="{{year.year}}" style="width: {{barWidth(year.count, keyword.years)}}%; height: {{barHeight(year.count, keyword.years)}}px; top: {{barTop(year.count, keyword.years)}}px; left: {{barLeft(year.year, keyword.years)}}%; color: {{barColor(year.count, year.year, keyword.years)}}; background-color: {{barBackgroundColor(year.count, year.year, keyword.years)}}">{{ year.count }}</bar>

@@ -30,13 +30,31 @@ app.post("/users", function(request, response){
 		if( err ) throw err;
 		if( rows == "" ){
 			// Looks like they aren't -- insert away!
-			connection.query("INSERT INTO sotu.users SET userid = ?, email = ?, facebookid = ?", [request.body.userid, request.body.email,request.body.facebookid], function(err, result){
+					console.log(request.body);
+					connection.query("INSERT INTO sotu.users SET userid = ?, email = ?, facebookid = ?, gender = ?, link = ?, name = ?, timezone = ?, locale = ?", [request.body.userid, request.body.email,request.body.facebookid,request.body.gender,request.body.link,request.body.name,request.body.timezone, request.body.locale], function(err, result){
 				if( err ) throw err;
 				response.status(200).json("Added " + request.body.email);
 			});
 		}
 		else {
-			response.status(409).json(rows);
+			// OK, they've previously registered. Let's update their current guesses to their old ID and delete this old ID
+			
+			var original_id = rows;
+			connection.query('SELECT * FROM sotu.guesses WHERE userid = ?', [request.body.userid], function(err, rows, fields){
+				rows.forEach( function(current, index, array){
+					console.log("Old ID is: " + original_id[0].userid);
+					connection.query('UPDATE sotu.guesses SET guess = ? WHERE userid = ? AND phrase = ?', [current.guess, original_id[0].userid, current.phrase], function(err){
+						if( err ) throw err;
+					});
+				});
+				
+				connection.query('DELETE FROM sotu.guesses WHERE userid = ?', [request.body.userid], function(err){
+					if( err ) throw err;
+					
+					// Return original userid entry
+					response.status(409).json(original_id);
+				});
+			});
 		}
 	});
 
@@ -71,8 +89,6 @@ app.get("/users", function(request, response){
 	}
 	
 });
-
-
 
 // Submit guess
 app.post("/guesses", function(request, response){

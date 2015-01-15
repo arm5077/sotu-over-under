@@ -478,6 +478,25 @@ body {
 				background-color: #FAA61A !important;
 			}	
 		
+		
+		
+@media only screen AND (max-width : 930px) {		
+	.content .guessContainer:before {
+		position: relative;
+		top: 0;
+		left: 0;
+		margin: auto;
+		display: block;
+		width: 28px;
+		text-align: center;
+		margin-bottom: 10px;
+		font-size: 21pt;
+		height: 34px;
+		line-height: 27px;
+		padding:0px;
+	}
+}
+		
 @media only screen AND (max-width : 750px) {		
 	.content ul.legend li {
 		display: block;
@@ -569,4 +588,6 @@ body {
 		width: 100%;
 	}
 	
+	
+
 }

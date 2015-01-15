@@ -375,7 +375,7 @@ body {
 			
 			.content .guessContainer .sliderBox input[type=range]{
 			    -webkit-appearance: none;
-				width: 89%;
+				width: 87%;
 				float:left;
 			}
 			
@@ -483,11 +483,25 @@ body {
 		display: block;
 		margin-bottom: 5px;
 	}
+	
+	.content ul.legend li .removeMobile {
+		display:none;
+		
+	}
 }
 @media only screen AND (max-width : 500px) {
 
+	.removeMobile {
+		display:none;
+	}
+	
 	.content {
 		width: 95%;
+	}
+	
+	.content .guessContainer {
+		margin-bottom: 40px;
+		padding-bottom:40px;
 	}
 	
 	.content .guessContainer:before {

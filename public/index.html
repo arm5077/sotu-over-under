@@ -40,7 +40,7 @@
 		</div>
 		<div class="guessContainer" ng-repeat="keyword in keywords"  ng-init="submitted='submit'" number="{{$index + 1}}" >
 			<h1 class="phrase">{{ keyword.phrase }}</h1>
-			<p>{{ keyword.intro }}</p>
+			<div ng-bind-html="renderHTML(keyword.intro);"></div>
 			<div class="quoteBox">
 				<div class="quote" ng-show="currentQuote == $index" ng-repeat="quote in keyword.quotes" ng-bind-html="renderHTML(quote)"></div>
 			</div>

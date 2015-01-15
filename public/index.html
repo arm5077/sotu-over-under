@@ -49,7 +49,7 @@
 					Number of "{{keyword.phrase}}" SOTU mentions, by year
 				</div>
 				<div class="chartContainer" height="{{ chartHeight }}px">
-					<bar ng-repeat="year in keyword.years" year="{{year.year}}" style="width: {{barWidth(year.count, keyword.years)}}%; height: {{barHeight(year.count, keyword.years)}}px; top: {{barTop(year.count, keyword.years)}}px; left: {{barLeft(year.year, keyword.years)}}%; color: {{barColor(year.count, year.year, keyword.years)}}; background-color: {{barBackgroundColor(year.count, year.year, keyword.years)}}">{{ year.count }}</bar>
+					<bar ng-repeat="year in keyword.years" year="{{year.year}}" ng-style="{width: barWidth(year.count, keyword.years) + '%', height: barHeight(year.count, keyword.years) + 'px', top: barTop(year.count, keyword.years) + 'px', left: barLeft(year.year, keyword.years) + '%', color: barColor(year.count, year.year, keyword.years), 'background-color': barBackgroundColor(year.count, year.year, keyword.years)}">{{ year.count }}</bar>
 				</div>
 			</div>
 			<p>In his upcoming SOTU, how many times do you think Obama will mention <strong>{{ keyword.phrase.toLowerCase() }}</strong>?</p>			
@@ -71,8 +71,6 @@
 </body>
 
 <script>
-var pymChild = new pym.Child();
-setInterval(function(){ pymChild.sendHeight(); }, 1000);
 </script>
 
 <script type = "text/javascript" src="data.json"></script>

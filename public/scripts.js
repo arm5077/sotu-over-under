@@ -105,8 +105,10 @@ app.controller("sotuController", ["$scope", "$sce", "$http", "$compile", functio
 		if( isNaN(value) ) value = 0;
 		var index = data.years.map(function(data){ return data.year }).indexOf(2015);
 		if( index == "-1" ) {
-			console.log("yo");
-			data.years.push({year: 2015, count: value});
+			
+				console.log("yo");
+				data.years.push({year: 2015, count: value});
+			
 		}
 		else {
 			data.years[index].count = value;

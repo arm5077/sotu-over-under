@@ -375,8 +375,9 @@ body {
 			
 			.content .guessContainer .sliderBox input[type=range]{
 			    -webkit-appearance: none;
-				width: 87%;
+				width: 84%;
 				float:left;
+				margin-top:-20px\9;
 			}
 			
 			@-moz-document url-prefix() {
@@ -386,6 +387,11 @@ body {
 					float:left;
 				}
 	
+			}
+			
+			input[type=range]::-ms-track {
+				width: 84%;
+				float:left;
 			}
 			
 			.content .guessContainer .sliderBox input[type=range]::-webkit-slider-runnable-track {
@@ -417,6 +423,17 @@ body {
 				cursor:pointer;
 			}
 
+			input[type=range]::-ms-thumb {
+				border: none;
+			    height: 20px;
+			    width: 20px;
+			    border-radius: 50%;
+			    background: #FAA61A;
+			    
+				cursor:pointer;
+				z-index:99;
+			}
+			
 			.content .guessContainer .sliderBox input[type=range]:focus {
 			    outline: none;
 			}
@@ -428,6 +445,23 @@ body {
 			.content .guessContainer .sliderBox input[type=range]::-moz-range-track {
 				 background: #ccc;
 			}	
+			
+			input[type=range]::-ms-track {
+				background: #ccc;
+				height:20px;
+				width:100%;
+				background-color: #ccc; /* Hides the slider so custom styles can be added */
+				border-color: transparent;
+				color:transparent;
+			}
+			
+			input[type=range]::-ms-fill-lower {
+				background: #FAA61A;
+			}
+			
+			input[type=range]:focus::-ms-fill-upper {
+			background: #ccc;
+			}
 			
 		.content .guessContainer .buttonBox {
 			width:100%;

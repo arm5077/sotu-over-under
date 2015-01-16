@@ -22,6 +22,12 @@ connection.query("SHOW DATABASES", function(err,rows,fields){
 	console.log("Yo: " + fields[0]);	
 });
 
+// Redirect page
+app.get("/redirect", function(request, response){
+	response.writeHead(302, { 'Location': 'http://www.nationaljournal.com/white-house/how-many-times-will-obama-say-jobs-in-his-state-of-the-union-speech-20150115'});
+	response.end();
+});
+
 // Add new user
 app.post("/users", function(request, response){
 	

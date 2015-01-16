@@ -63,10 +63,17 @@
 			</div>
 			<div class="buttonBox">
 				<input type="button" ng-class="{'submit submitted': submitted == 'submitted', submit: submitted != 'submitted'}" value="{{submitted}}" ng-click="submitGuess(keyword.guess, keyword); submitted = 'submitted';" />
+				<a id="facebook" href="https://www.facebook.com/dialog/feed?app_id=337779369755179&link=http://www.nationaljournal.com/white-house/how-many-times-will-obama-say-jobs-in-his-state-of-the-union-speech-20150115&description=Guess how often the president will mention key policy buzzwords—and see how well you stack up against the rest of our readers.&redirect_uri=http://sotu-over-under-dev-env-fsescqvutg.elasticbeanstalk.com/redirect&name=I think Obama will mention '{{keyword.phrase.toLowerCase()}}' {{keyword.guess}} times in Tuesday's State of the Union speech. You?" target="_blank" ng-show="submitted == 'submitted'"><i class="fa fa-facebook"></i></a>
+				
+				<a id="twitter" href="https://twitter.com/intent/tweet?original_referer=http://www.nationaljournal.com/white-house/how-many-times-will-obama-say-jobs-in-his-state-of-the-union-speech-20150115&text=I think Obama will say '{{keyword.phrase.toLowerCase()}}' {{keyword.guess}} times in Tuesday's SOTU speech. You? (via @nationaljournal):&:tw_p=tweetbutton&url=http://www.nationaljournal.com/white-house/how-many-times-will-obama-say-jobs-in-his-state-of-the-union-speech-20150115" target="_blank" ng-show="submitted == 'submitted'"><i class="fa fa-twitter"></i></a>
 				<!--<input type="button" class="register" ng-hide="registered_yet" ng-click="insertLogin($event)" value="Save your answers" />-->
+				
 			</div>
 		</div>
 		
+		<div class="success" ng-show="questionsAnswered >= keywords.length">
+			<i class="fa fa-check-circle"></i> Well done! Check back after the speech Tuesday to see how you stacked up.
+		</div>
 			
 	</div>
 	
@@ -74,6 +81,8 @@
 </body>
 
 <script>
+	var pymChild = new pym.Child();
+	setInterval(function(){ pymChild.sendHeight(); }, 1000);
 </script>
 
 <script type = "text/javascript" src="data.json"></script>

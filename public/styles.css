@@ -493,7 +493,7 @@ body {
 			text-align:center;
 		}
 		
-			.content .guessContainer .buttonBox input {
+			.content .guessContainer .buttonBox input, .content .guessContainer .buttonBox a {
 				-webkit-appearance: none;
 				font-family: FreightSans, sans-serif; 
 				margin: 20px auto 0px;
@@ -505,8 +505,21 @@ body {
 				color: rgba(255,255,255,.95);
 				font-size:14pt;
 				text-transform: uppercase;
+				display:inline-block;
 				
 			}
+			
+				.content .guessContainer .buttonBox a#facebook {
+					background-color: #3b5998;
+					
+				}
+				
+				.content .guessContainer .buttonBox a#twitter {
+					background-color: #4099FF;
+					
+					
+				}
+				
 				.content .guessContainer .buttonBox input.submit {
 					background-color: #FAA61A;
 				}
@@ -621,9 +634,14 @@ body {
 		width: 13%;
 	}
 	
-	.content .guessContainer .buttonBox input {
+	.content .guessContainer .buttonBox input, .content .guessContainer .buttonBox a{
 		width: 100%;
 	}
+		
+		.content .guessContainer .buttonBox a{ 
+			padding:10px 0px;
+			margin-top:5px;
+		}
 	
 	.content .guessContainer h1.phrase {
 		font-size:30pt;

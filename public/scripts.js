@@ -65,6 +65,7 @@ app.controller("sotuController", ["$scope", "$sce", "$http", "$compile", functio
 	$scope.padding = .1;
 	$scope.minHeight = 30;
 	$scope.currentQuote = 0;
+	$scope.questionsAnswered = 0;
 	
 	$scope.FBlogin = function(){
 		FB.login(function(response){
@@ -154,6 +155,9 @@ app.controller("sotuController", ["$scope", "$sce", "$http", "$compile", functio
 	};
 	
 	$scope.submitGuess = function(guess, keyword){
+		// First, let's mark them as having answered a question
+		$scope.questionsAnswered++;
+	
 		// See if they haven't actually selected anything;
 		// if they haven't (sillies!) then default to 0
 		if(keyword.years.map(function(keyword){ return keyword.year }).indexOf(2015) == "-1") {

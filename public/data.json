@@ -2,7 +2,7 @@ var keywords = [
 	{
 		"guess": 0,
 		"phrase": "middle class",
-		"intro": "<p>President Obama uses “middle class” most often in the context of reform: reforming health care would help the middle class. Reforming the tax code would help the middle class. Reforming housing policy? Helps the middle class. You get the idea.</p><p>In 2010, he mentioned “middle class” five times to promote affordability in health care, child care, housing, health insurance. The term didn’t come up in 2011 but reappeared in 2012 in a push for tax reform. He used the term most often in 2013—eight times—to push for increased access to early and higher education.</p>",
+		"intro": "<p>President Obama uses “middle class” most often in the context of reform: reforming health care would help the middle class. Reforming the tax code would help the middle class. Reforming housing policy? Helps the middle class. You get the idea.</p><p>In 2010, he mentioned “middle class” five times to promote affordability in health care, child care, housing, health insurance. The term didn’t come up in 2011 but reappeared in 2012 in a push for tax reform. </p><p>He used the term most often in 2013—eight times—to push for increased access to early and higher education.</p>",
 		"quotes": [
 			"\"It is our generation's task, then, to reignite the true engine of America's economic growth: a rising, thriving <strong>middle class</strong>.\" (2013)",
 			"\"Now, the price of college tuition is just one of the burdens facing the <strong>middle class</strong>.\" (2010)",
@@ -42,7 +42,7 @@ var keywords = [
 	{
 		"guess": 0,
 		"phrase": "health care",
-		"intro": "",
+		"intro": "<p>Obama's use of “health care” peaked in 2009 with 15 mentions, when the push for his landmark health care law was already well underway. His rhetoric for comprehensive reform was strongest that year, too. By 2010, he was asking people to consider his proposal, and in 2011, he joked about hearing rumors about people who still had concerns about the law.</p><p>In 2013, Obama used “health care” five times to say that Obamacare was working—but that was before that year’s disastrous website rollout.</p><p>“Health care” has since made fewer appearances as Obama moves onto his other big reform hopes, like immigration, but expect to hear about high Obamacare enrollment numbers this year.</p>",
 		"quotes": [
 			"\"The cost of <strong>health care</strong> eats up more and more of our savings each year, yet we keep delaying reform.\" (2009)",
 			"\"Given these facts, we can no longer afford to put <strong>health care</strong> reform on hold. We can't afford to do it. It's time.\" (2009)",
@@ -82,7 +82,7 @@ var keywords = [
 	{
 		"guess": 0,
 		"phrase": "jobs",
-		"intro": "<p>When Obama took office, the national unemployment rate was 7.8 percent. The new president had inherited a tough economy, and his 14 mentions of \"jobs\" focused on the stimulus bill that would become law within a few weeks.</p><p>In 2010, Obama vowed to make jobs \"the number one focus\" of the year, repeating the word 23 times. By 2011, the context shifted away from saving the jobs of a failing automotive industry and toward more innovative sectors. The president's use of the term peaked in 2012; no surprise there-it was an election year, and Obama spent his 33 mentions of \"jobs\" reminding the public how many his administration had added since he took office. In 2013, the biggest \"jobs\" line of the 31 was that \"Apple will start making Macs in America again.\"</p><p>Obama will no doubt bring up \"jobs\" early and often this year, and in a more positive context, too. The unemployment rate dropped below 6 percent for the first time since 2008 in October, and the economy has now added more than 200,000 jobs for 11 straight months.</p>",
+		"intro": "<p>When Obama took office, the national unemployment rate was 7.8 percent. The new president had inherited a tough economy, and his 14 mentions of “jobs” focused on the stimulus bill that would become law within a few weeks. </p><p>The president’s use of the term peaked in 2012; no surprise there—it was an election year, and Obama spent his 33 mentions of “jobs” reminding the public how many his administration had added since he took office.</p><p>Obama will no doubt bring up “jobs” early and often this year, and in a more positive context, too. The unemployment rate dropped below 6 percent for the first time since 2008 in October, and the economy has now added more than 200,000 jobs for 11 straight months.</p>",
 		"quotes": [
 			"\"I do not accept a future where the <strong>jobs</strong> and industries of tomorrow take root beyond our borders, and I know you don't either.\" (2009)",
 			"\"That is why <strong>jobs</strong> must be our number-one focus in 2010, and that's why I'm calling for a new <strong>jobs</strong> bill tonight.\" (2010)",
@@ -122,7 +122,7 @@ var keywords = [
 	{
 		"guess": 0,
 		"phrase": "energy",
-		"intro": "<p>In his 2009 address, Obama made energy one of his three top priorities, along with health care and education, vowing to create more programs and jobs in clean and renewable energy. The president mentioned \"energy\" most in 2012, using 23 mentions to pad his resume for his re-election campaign. By 2013 and 2014, \"energy\" was about cutting nationwide carbon emissions.</p><p>Expect the topic to come up frequently this year, especially about the administrations' \"all-of-the above\" energy policy, implemented last summer, and the historic global accords on climate change struck last fall.</p>",
+		"intro": "<p>In his 2009 address, Obama made energy one of his three top priorities, along with health care and education, vowing to create more programs and jobs in clean and renewable energy. </p><p>The president mentioned “energy” most in 2012, using 23 mentions to pad his resume for his re-election campaign. By 2013 and 2014, “energy” was about cutting nationwide carbon emissions. </p><p>Expect the topic to come up frequently this year, especially about the administrations’ “all-of-the above” energy policy, implemented last summer, and the historic global accords on climate change struck last fall.</p>",
 		"quotes": [
 			"\"We should put more Americans to work building clean <strong>energy</strong> facilities and give rebates to Americans who make their homes more <strong>energy</strong> efficient, which supports clean <strong>energy</strong> jobs.\" (2010)",
 			"\"Tonight I challenge you to join me in setting a new goal: By 2035, 80 percent of America's electricity will come from clean <strong>energy</strong> sources.\" (2011)",
@@ -161,7 +161,7 @@ var keywords = [
 	{
 		"guess": 0,
 		"phrase": "education",
-		"intro": "<p>Most of Obama's mentions of \"education\" over the years have referred to giving middle-class families better access to early and higher education. His 2011 address saw the rise of mentions of \"education\" in the context of boosting science, technology and engineering and math education. Obama has been pushing for funding in that area ever since, and it's bound to come up in this year's speech.</p><p>The year 2011 also put \"education\" in the context of immigration reform: Hundreds of thousands of students in American schools are children of undocumented workers, Obama said. The 13 mentions of the term in the president's 2013 address coincided with his request of Congress to amend the Higher Education Act and the announcement of a national college scorecard program.</p>",
+		"intro": "<p>Most of Obama’s mentions of “education” over the years have referred to giving middle-class families better access to early and higher education. His 2011 address saw the rise of mentions of “education” in the context of boosting science, technology and engineering and math education</p><p>The year 2011 also put “education” in the context of immigration reform: Hundreds of thousands of students in American schools are children of undocumented workers, Obama said. </p><p>The 13 mentions of the term in the president’s 2013 address coincided with his request of Congress to amend the Higher Education Act and the announcement of a national college scorecard program. </p>",
 		"quotes": [
 			"\"In the 21st century, the best antipoverty program around is a world-class <strong>education</strong>.\" (2010)",
 			"\"Over the next 10 years, nearly half of all new jobs will require <strong>education</strong> that goes beyond a high school <strong>education</strong>. And yet as many as a quarter of our students aren't even finishing high school.\" (2011)",
@@ -200,7 +200,7 @@ var keywords = [
 	{
 		"guess": 0,
 		"phrase": "security",
-		"intro": "<p>Obama's use of \"security\" in the context of national defense started slow, with just two mentions in 2009 about how he was \"carefully reviewing our policies\" in the Middle East. The next year, \"security\" was about the homeland, specifically the investments the administration had made in catching and stopping terrorist plots. In 2012, the focus was on Iran's nuclear program, and in 2013, on border security and cyber attacks.</p><p>Mentions of \"security\" peaked in 2014, with 10, after a terrible year for U.S. intelligence agencies, courtesy of Edward Snowden, and pressure on the Obama administration to reform surveillance programs. \"Security\" is likely to appear again in this context this year. It will also come up in the context of terrorism and the Islamic State, which pulled the U.S. back into the Middle East last year.</p>",
+		"intro": "<p>Obama’s use of “security” in the context of national defense started slow, with just two mentions in 2009 about Middle East policy. The next year, “security” was about the homeland, specifically the investments the administration had made in catching and stopping terrorist plots. </p><p>In 2012, the focus was on Iran’s nuclear program, and in 2013, on border security and cyber attacks. </p><p>Mentions of “security” peaked in 2014, with 10, after the Edward Snowden leaks and pressure on the Obama administration to reform surveillance programs. “Security” is likely to appear again in this context this year. It will also come up in the context of terrorism and the Islamic State, which pulled the U.S. back into the Middle East last year. </p>",
 		"quotes": [
 			"\"Now, throughout our history, no issue has united this country more than our <strong>security</strong>. Sadly, some of the unity we felt after 9/11 has dissipated.\" (2010)",
 			"\"We've made substantial investments in our homeland <strong>security</strong> and disrupted plots that threatened to take American lives.\" (2010)",

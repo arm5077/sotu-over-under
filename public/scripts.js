@@ -53,6 +53,11 @@ app.controller("sotuController", ["$scope", "$sce", "$http", "$compile", functio
 	console.log($scope.userid);
 	$scope.email = "";
 	$scope.facebookid = "";
+	$scope.gender = "";
+	$scope.link = "";
+	$scope.name = "";
+	$scope.timezone = "";
+	$scope.locale = "";
 	$scope.submitted_yet = false;
 	$scope.registered_yet = false;
 	$scope.keywords = keywords;
@@ -63,13 +68,20 @@ app.controller("sotuController", ["$scope", "$sce", "$http", "$compile", functio
 	
 	$scope.FBlogin = function(){
 		FB.login(function(response){
-			$scope.getEmail();
+			if (response.authResponse) {
+				$scope.getEmail();
+			}
 		});
 	};
 	$scope.getEmail = function(){
 		FB.api('/me', function(response) {
 			$scope.email=response.email;
-			console.log(response);
+			$scope.gender=response.gender;
+			$scope.link = response.link;
+			$scope.timezone = response.timezone;
+			$scope.name = response.name;
+			$scope.locale = response.locale;
+			
 			$scope.submitUser();
 			$scope.registered_yet = true;
 		},{scope: "public_profile, email"});
@@ -91,8 +103,9 @@ app.controller("sotuController", ["$scope", "$sce", "$http", "$compile", functio
 	};
 		
 	$scope.insertLogin = function($event){
+		
 		angular.element($event.target).parent().parent().append($compile("<login></login")($scope));
-		//$event.target.parentNode.parentNode.appendChild(document.createElement("login"));
+		
 	};
 	
 	$scope.insertBar = function(keyword){
@@ -122,7 +135,12 @@ app.controller("sotuController", ["$scope", "$sce", "$http", "$compile", functio
 			data: {
 				"userid": $scope.userid,
 				"email": $scope.email,
-				"facebookid": $scope.facebookid
+				"facebookid": $scope.facebookid,
+				"gender": $scope.gender,
+				"link": $scope.link,
+				"name": $scope.name,
+				"timezone": $scope.timezone,
+				"locale": $scope.locale
 			}
 		}).success(function(data, status, headers, config){
 			console.log("User data submitted and accepted with gusto!");
@@ -145,14 +163,15 @@ app.controller("sotuController", ["$scope", "$sce", "$http", "$compile", functio
 		}
 		
 		// If they haven't submitted/registered before, register them as a user first
-		if( !$scope.submitted_yet || !$scope.registered_yet) {
-			$scope.submitUser(function(){ 
-				submitGuessToServer();
-			});
+		if( $scope.submitted_yet || $scope.registered_yet) {
+			submitGuessToServer();	
+			
 		}
 		// This is for if their userid already exists on the database
 		else {
-			submitGuessToServer();	
+			$scope.submitUser(function(){ 
+				submitGuessToServer();
+			});
 		}
 		
 		function submitGuessToServer(){

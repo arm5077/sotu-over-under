@@ -28,6 +28,12 @@
 <body>
 	<div class="content" ng-controller="sotuController">
 		
+		<login></login>
+
+		<div class="success" ng-show="registered_yet">
+			<i class="fa fa-check-circle"></i> You're logged in!
+		</div>
+		
 		<ul class="legend">
 			<li>KEY<span class="removeMobile">&nbsp; &nbsp; &nbsp;//</span></li>
 			<li><div class="block" id="obamas">Obama's mentions</div></li>
@@ -35,9 +41,6 @@
 			<li><div class="block" id="theirs">Average of all NJ user guesses</div></li>
 		</ul>
 		
-		<div class="success" ng-show="registered_yet">
-			<i class="fa fa-check-circle"></i> You're logged in!
-		</div>
 		<div class="guessContainer" ng-repeat="keyword in keywords"  ng-init="submitted='submit'" number="{{$index + 1}}" >
 			<h1 class="phrase">{{ keyword.phrase }}</h1>
 			<div ng-bind-html="renderHTML(keyword.intro);"></div>
@@ -60,7 +63,7 @@
 			</div>
 			<div class="buttonBox">
 				<input type="button" ng-class="{'submit submitted': submitted == 'submitted', submit: submitted != 'submitted'}" value="{{submitted}}" ng-click="submitGuess(keyword.guess, keyword); submitted = 'submitted';" />
-				<input type="button" class="register" ng-hide="registered_yet" ng-click="insertLogin($event)" value="Register to save" />
+				<!--<input type="button" class="register" ng-hide="registered_yet" ng-click="insertLogin($event)" value="Save your answers" />-->
 			</div>
 		</div>
 		

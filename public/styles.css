@@ -120,7 +120,7 @@ body {
 			color: rgba(255,255,255,.9);
 		}
 		
-		.content .guessContainer .login {
+ 			.login {
 			width: 94%;
 			background-color: #fafafa;
 			padding: 3%;
@@ -129,21 +129,21 @@ body {
 			border: 1px solid lightgray
 		}
 
-			.content .guessContainer .login h1 {
+			.login h1 {
 				margin: 0;
 				padding: 0;
 				line-height: 1em;
 				font-size:18pt;
 			}
 
-			.content .guessContainer .login h2 {
+			.login h2 {
 				margin: 5px 0px 13px;
 				padding: 0;
 				font-weight: 100;
 				font-size: 15pt;
 			}
 
-			.content .guessContainer .login label , #or {
+			.login label , #or {
 				font-weight:100;
 				margin-top:10px;
 				font-size:11pt;
@@ -161,21 +161,44 @@ body {
 					margin: 10px 0px;
 				}
 
-			.content .guessContainer .login input[type=text]{
-				width: 83%;
+			.login input[type=text]{
+				width: 80%;
 				padding: 1%;
 				font-family: FreightSans, sans-serif;
 				color: #555;
 			}
 
-			.content .guessContainer .login input[type=button]{
+			.login input[type=button]{
 				padding: 1%;
 				font-family: FreightSans, sans-serif;
 				color: #555;
 				width:6.7%;
+				
+				
+				
 			}
-
-			.content .guessContainer .login input[type=button].facebook { 
+				
+			.login input[type=button]#email {
+				border: none;
+				height: 31px;
+				font-size: 13pt;
+				line-height: 15px;
+				margin-top: 0px;
+				position: relative;
+				top: 2px;
+				font-weight: 100;
+				border-radius: 2px;
+				cursor:pointer;
+				border: 1px solid #bbb;
+				background-color:#ddd;
+				min-width:40px;
+			}
+				.login input[type=button]#email:hover {
+				
+				
+				}
+				
+			.login input[type=button].facebook { 
 
 				width:100%;
 				background-color: #3B5998;
@@ -512,6 +535,25 @@ body {
 				background-color: #FAA61A !important;
 			}	
 		
+		
+		
+@media only screen AND (max-width : 930px) {		
+	.content .guessContainer:before {
+		position: relative;
+		top: 0;
+		left: 0;
+		margin: auto;
+		display: block;
+		width: 28px;
+		text-align: center;
+		margin-bottom: 10px;
+		font-size: 21pt;
+		height: 34px;
+		line-height: 27px;
+		padding:0px;
+	}
+}
+		
 @media only screen AND (max-width : 750px) {		
 	.content ul.legend li {
 		display: block;
@@ -522,6 +564,11 @@ body {
 		display:none;
 		
 	}
+	
+	.login input[type=text]{
+		width:73%;	
+	}
+
 }
 @media only screen AND (max-width : 500px) {
 
@@ -603,4 +650,6 @@ body {
 		width: 100%;
 	}
 	
+	
+
 }

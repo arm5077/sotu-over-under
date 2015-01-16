@@ -68,7 +68,9 @@ app.controller("sotuController", ["$scope", "$sce", "$http", "$compile", functio
 	
 	$scope.FBlogin = function(){
 		FB.login(function(response){
-			$scope.getEmail();
+			if (response.authResponse) {
+				$scope.getEmail();
+			}
 		});
 	};
 	$scope.getEmail = function(){

@@ -162,7 +162,7 @@ body {
 				}
 
 			.login input[type=text]{
-				width: 83%;
+				width: 80%;
 				padding: 1%;
 				font-family: FreightSans, sans-serif;
 				color: #555;
@@ -173,8 +173,31 @@ body {
 				font-family: FreightSans, sans-serif;
 				color: #555;
 				width:6.7%;
+				
+				
+				
 			}
-
+				
+			.login input[type=button]#email {
+				border: none;
+				height: 31px;
+				font-size: 13pt;
+				line-height: 15px;
+				margin-top: 0px;
+				position: relative;
+				top: 2px;
+				font-weight: 100;
+				border-radius: 2px;
+				cursor:pointer;
+				border: 1px solid #bbb;
+				background-color:#ddd;
+				min-width:40px;
+			}
+				.login input[type=button]#email:hover {
+				
+				
+				}
+				
 			.login input[type=button].facebook { 
 
 				width:100%;
@@ -507,6 +530,11 @@ body {
 		display:none;
 		
 	}
+	
+	.login input[type=text]{
+		width:73%;	
+	}
+
 }
 @media only screen AND (max-width : 500px) {
 

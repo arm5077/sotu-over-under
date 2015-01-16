@@ -33,6 +33,11 @@
 		<div class="success" ng-show="registered_yet">
 			<i class="fa fa-check-circle"></i> You're logged in!
 		</div>
+
+		<div class = "rankingBox" ng-show="ranking">
+			<h1>{{ ranking > .2 ? (ranking > .4 ? (ranking >= .6 ? (ranking > .75 ? ( ranking > .90 ? "You're a superstar." : "Good job!" ) : "Pretty good!" ) : "Middling!") : "Not so good" ) : "So bad, it's good" }}</h1>
+			<h2>You ranked in the {{ Math.round(ranking * 100) }}th percentile, meaning {{ Math.round( (1-ranking) * 100) }}% of SOTU watchers did better than you. {{ ranking > .2 ? (ranking > .4 ? (ranking >= .6 ? (ranking > .75 ? ( ranking > .90 ? "Are you Obama's speechwriter?" : "You should write the speech next year!" ) : "You've got some skills!" ) : "Being average is nothing to be ashamed of.") : "Better luck next year." ) : "If everyone did the opposite of you, we'd all have won." }}</h2>
+		</div>
 		
 		<ul class="legend">
 			<li>KEY<span class="removeMobile">&nbsp; &nbsp; &nbsp;//</span></li>
@@ -55,13 +60,13 @@
 					<bar ng-repeat="year in keyword.years" year="{{year.year}}" ng-style="{width: barWidth(year.count, keyword.years) + '%', height: barHeight(year.count, keyword.years) + 'px', top: barTop(year.count, keyword.years) + 'px', left: barLeft(year.year, keyword.years) + '%', color: barColor(year.count, year.year, keyword.years), 'background-color': barBackgroundColor(year.count, year.year, keyword.years)}">{{ year.count }}</bar>
 				</div>
 			</div>
-			<p>In his upcoming SOTU, how many times do you think Obama will mention <strong>{{ keyword.phrase.toLowerCase() }}</strong>?</p>			
-			<div ng-class="{sliderBox: submitted != 'submitted', 'sliderBox disabled': submitted == 'submitted'}" ng-mousedown = "insertBar(keyword)">
+			<p ng-hide="is_sotu_over">In his upcoming SOTU, how many times do you think Obama will mention <strong>{{ keyword.phrase.toLowerCase() }}</strong>?</p>			
+			<div ng-class="{sliderBox: submitted != 'submitted', 'sliderBox disabled': submitted == 'submitted'}" ng-mousedown = "insertBar(keyword)" ng-hide="is_sotu_over">
 				<input type="text" ng-model="keyword.guess" ng-change="applyGuess(keyword.guess, keyword)" />
 				<input type="range" name="slider-fill" data-highlight="true" min="0" max="40" ng-model="keyword.guess" ng-click="applyGuess(keyword.guess, keyword)" ng-change="applyGuess(keyword.guess, keyword)">
 				<div style="clear:both"></div>
 			</div>
-			<div class="buttonBox">
+			<div class="buttonBox" ng-hide="is_sotu_over">
 				<input type="button" ng-class="{'submit submitted': submitted == 'submitted', submit: submitted != 'submitted'}" value="{{submitted}}" ng-click="submitGuess(keyword.guess, keyword); submitted = 'submitted';" />
 				<a id="facebook" href="https://www.facebook.com/dialog/feed?app_id=337779369755179&link=http://www.nationaljournal.com/white-house/how-many-times-will-obama-say-jobs-in-his-state-of-the-union-speech-20150115&description=Guess how often the president will mention key policy buzzwords—and see how well you stack up against the rest of our readers.&redirect_uri=http://sotu-over-under-dev-env-fsescqvutg.elasticbeanstalk.com/redirect&name=I think Obama will mention '{{keyword.phrase.toLowerCase()}}' {{keyword.guess}} times in Tuesday's State of the Union speech. You?" target="_blank" ng-show="submitted == 'submitted'"><i class="fa fa-facebook"></i></a>
 				

@@ -66,6 +66,11 @@ app.controller("sotuController", ["$scope", "$sce", "$http", "$compile", functio
 	$scope.minHeight = 30;
 	$scope.currentQuote = 0;
 	$scope.questionsAnswered = 0;
+	$scope.is_sotu_over = true;
+	$scope.total = 0;
+	$scope.ranking = false;
+	$scope.Math = window.Math;
+	
 	
 	$scope.FBlogin = function(){
 		FB.login(function(response){
@@ -74,6 +79,7 @@ app.controller("sotuController", ["$scope", "$sce", "$http", "$compile", functio
 			}
 		});
 	};
+	
 	$scope.getEmail = function(){
 		FB.api('/me', function(response) {
 			$scope.email=response.email;
@@ -119,8 +125,6 @@ app.controller("sotuController", ["$scope", "$sce", "$http", "$compile", functio
 		if( isNaN(value) ) value = 0;
 		var index = data.years.map(function(data){ return data.year }).indexOf(2015);
 		if( index == "-1" ) {
-			
-				console.log("yo");
 				data.years.push({year: 2015, count: value});
 			
 		}
@@ -151,6 +155,49 @@ app.controller("sotuController", ["$scope", "$sce", "$http", "$compile", functio
 			console.log("Looks like there's already a record in the system! Updating " + $scope.userid + " to equal " + data[0].userid + ".");
 			$scope.userid = data[0].userid;
 			$scope.submitted_yet = true;
+			
+			// The State of the Union speech is over! Let's pull 
+			if( $scope.is_sotu_over ){
+				// get user record
+				console.log("Submitting userid " + $scope.userid + " to retrieve their guesses...")
+				$http({
+					url: "/users/guesses/" + $scope.userid,
+					method: "GET"
+				}).success(function(data, status, headers, config){
+					
+					// Insert "You" bars for every keyword
+					data.forEach(function(guess){
+						var index = $scope.keywords.map(function(data){ return data.phrase }).indexOf(guess.phrase)
+						var keyword = $scope.keywords[index];
+						keyword.years.push({year: "You", count: guess.guess });
+						
+						// Now insert the average (this is code that could be refactored to be more DRY)
+						$http({
+							url: "guesses/average?phrase=" + keyword.phrase,
+							method: "GET",
+							data: {
+								"phrase": keyword.phrase
+							}
+						}).success(function(data, status, headers, config){
+							console.log("Getting the average guess went swimmingly!");
+							var index = keyword.years.map(function(data){ return data.year }).indexOf("Avg.")
+							if( index == "-1" ) {
+								keyword.years.push({year: "Avg.", count: Math.round(data[0].average) });
+							}	
+						}).error(function(data, status, headers, config){
+							console.log("Getting the average guess for " + keyword.phrase + " bit the dust. Here's why: " + data);			
+						});		
+					});
+				}).error(function(data, status, headers, config){
+					console.log("Oh dear! We had an error getting those guesses.")
+					
+				});
+
+				// Lets get their rank!
+				$scope.getRank();
+
+			}
+			
 		});
 	};
 	
@@ -217,6 +264,32 @@ app.controller("sotuController", ["$scope", "$sce", "$http", "$compile", functio
 		
 	};
 	
+	$scope.getRank = function(){
+
+		// Get sum of all 2015 wordcounts
+		keywords.forEach(function(keyword){
+			var index = keyword.years.map(function(data){ return data.year }).indexOf("2015")
+			if( index != "-1")
+				$scope.total += keyword.years[i].count;
+			else {
+				console.log("Looks like 2015 values haven't been supplied to '" + keyword.phrase + "'! Supplying 0.");
+				$scope.total += 0;
+			}
+		});
+		
+		$http({
+			url: "users/rankings/" + $scope.userid + "?total=" + $scope.total,
+			method: "GET"
+		}).success(function(data, status, headers, config){
+			$scope.ranking = data.rank;
+			console.log("And the percentile is......" + data.rank)
+		}).error(function(data, status, headers, config){
+			console.log("Oops! Error! Reponse from server: " + data)
+		});
+		
+
+	}
+	
 	$scope.barHeight = function(value, data){
 		height = value / d3.max(data, function(d){ return d.count }) * $scope.chartHeight;
 		
@@ -248,7 +321,13 @@ app.controller("sotuController", ["$scope", "$sce", "$http", "$compile", functio
 		if( count == 0 ){
 			switch(year){
 				case 2015: 
-					return "rgba(118,182,227,1)"
+					if( $scope.is_sotu_over )
+						return "rgba(250,166,26,1)";
+					else
+						return "rgba(118,182,227,1)"
+				break;
+				case "You":
+					return "rgba(118,182,227,1)";
 				break;
 				case "Avg.": 
 					return "rgba(38,126,193, 1)";
@@ -267,6 +346,11 @@ app.controller("sotuController", ["$scope", "$sce", "$http", "$compile", functio
 		if( count == 0){
 			switch(year){
 				case 2015:
+					if( $scope.is_sotu_over )
+						return "rgba(250,166,26,0)";
+					else
+						return "rgba(118,182,227, 0)";
+				case "You":
 					return "rgba(118,182,227, 0)";
 				case "Avg.": 
 					return "rgba(38,126,193, 0)";
@@ -277,6 +361,11 @@ app.controller("sotuController", ["$scope", "$sce", "$http", "$compile", functio
 		else
 			switch(year){
 				case 2015:
+					if( $scope.is_sotu_over )
+						return "rgba(250,166,26,1)";
+					else
+						return "rgba(118,182,227,1)";
+				case "You":
 					return "rgba(118,182,227,1)";
 				case "Avg.": 
 					return "rgba(38,126,193,1)";
